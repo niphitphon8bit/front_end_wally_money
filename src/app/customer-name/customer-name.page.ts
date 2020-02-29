@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerNamePage implements OnInit {
 
+  private name: string;
+  private lastname: string;
+
+
   constructor() { }
 
   ngOnInit() {
