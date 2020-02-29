@@ -45,8 +45,8 @@ const routes: Routes = [
     ]
   },
   {
-    path: '',
-    redirectTo: '/tabs/tab1',
+    path: 'main_tabs',
+    redirectTo: '/tabs/tab2',
     pathMatch: 'full'
   }
 ];
