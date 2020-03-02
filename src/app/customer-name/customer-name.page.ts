@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-customer-name',
   templateUrl: './customer-name.page.html',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerNamePage implements OnInit {
 
-  private name: string;
+  private name: string ;
   private lastname: string;
 
 
   constructor() { }
 
   ngOnInit() {
+  
   }
 
 }
