@@ -9,4 +9,14 @@ export class Tab1Page {
 
   constructor() {}
 
+  doughnutChartLabels = ['ครอบครัว', 'เงินเดือน', 'รายจ่ายส่วนตัว'];
+  doughnutChartData = [350, 450, 100];
+  doughnutChartType = 'doughnut';
+  donutOptions: any = {
+      legend: {
+        display: false,
+        position: 'right'
+      }
+    };
 }
+
