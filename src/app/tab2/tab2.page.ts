@@ -22,7 +22,7 @@ export class Tab2Page implements OnInit {
   public records: any = [
     {
       ts_id: 1,
-      ts_name: "ค่าขนม",
+      ts_name: "ค่าขนมจ้าาาาาาาาาาาาาาาาาาาาาาาาาาาาาา",
       ts_cost: 2125,
       ts_date: "23:08:46",
       ts_category: 'R',
@@ -51,7 +51,7 @@ export class Tab2Page implements OnInit {
     {
       ts_id: 5,
       ts_name: "แม่ยืม",
-      ts_cost: 45000,
+      ts_cost: 45000098,
       ts_date: "20:08:46",
       ts_category: 'E',
     },
