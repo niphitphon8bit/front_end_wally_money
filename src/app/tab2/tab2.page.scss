@@ -1,3 +1,33 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+ion-card {
+  display: flex;
+  flex-direction: column;
+  width: 90% !important;
+  margin-left: 4%;
+  // margin: 0 !important;
+  border-radius: 10px;
+}
+* {
+  font-family: Kanit;
+}
+// #history {
+//   font-size: 12px;
+// }
+
+ion-item {
+  --min-height: 16px;
+}
+
+// ion-item-sliding ion-item:first-child {
+//   border-radius: 10px;
+// }
+
+#show_balance,
+#history {
+  --min-height: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
