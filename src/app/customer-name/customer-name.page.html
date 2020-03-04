@@ -1,12 +1,13 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title> Wally_money </ion-title>
-
+  <ion-toolbar color="warning">
+    <ion-title align="center"> Wally money </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content >
   <ion-card>
     <ion-card-header>
       <ion-card-title id ="title_name"  style="text-align: center;" >Sign in</ion-card-title>
@@ -22,12 +23,12 @@
   <h1 id ="textsize">Last name </h1>
   <ion-item>
     <br>
-  
     <ion-input placeholder="Enter Input" name="lastname"> </ion-input>
   </ion-item>
     </ion-card-content>
-
-   <ion-button color="primary"  routerLink="/main_tab" expand="block" >Sign in</ion-button>  <!-- /*routerLink="/main_tab" -->
+    <br>
+   <ion-button color="primary"  routerLink="/main_tab" expand="block" >ยืนยัน</ion-button>  <!-- /*routerLink="/main_tab" -->
+   <br>
   </ion-card> 
  
   <!-- (click)="insert_customer()"  -->
