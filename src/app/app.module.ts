@@ -22,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      backButtonText: 'ย้อนกลับ'
+    }),
     AppRoutingModule,
     FormsModule,
     HttpModule,

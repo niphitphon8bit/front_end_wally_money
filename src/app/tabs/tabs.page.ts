@@ -1,6 +1,7 @@
 import { TransactionInsertPage } from './../transaction-insert/transaction-insert.page';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
@@ -11,11 +12,17 @@ export class TabsPage implements OnInit {
   constructor(
 
     private modalController: ModalController,
-    private alertController: AlertController
+    private alertController: AlertController,
   ) { }
 
   ngOnInit() {
   }
+
+  ionViewWillEnter(){
+  
+  }
+
+
 
   async transaction_insert() {
     const modal = await this.modalController.create({
@@ -23,9 +30,10 @@ export class TabsPage implements OnInit {
     })
 
     modal.onDidDismiss().then((status) => {
-      // if(status != null){
-      //   this.get_all_major()
-      // }
+      
+      if(status != null){
+        console.log(status);
+      }
     });
     return await modal.present()
   }
