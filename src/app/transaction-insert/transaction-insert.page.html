@@ -4,53 +4,57 @@
       <ion-back-button defaultHref="/main_tab" (click)="closeModal()"></ion-back-button>
     </ion-buttons>
     <ion-title align="center" style="padding-right:80px;">เพิ่มรายการ</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="insert_transaction()">
+        บันทึก
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
-  <ion-buttons slot="end">
-    <ion-back-button (click)="closeModal()">บันทึก</ion-back-button>
-  </ion-buttons>
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label style="font-family: Kanit;">วัน</ion-label>
-    <ion-datetime displayFormat="MM/DD/YY" value="{{starting_date}}"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label style="font-family: Kanit;">เวลา</ion-label>
-    <ion-datetime displayFormat="HH:mm:ss" value="{{current_time}}"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating" style="font-family: Kanit;">ชื่อรายการ</ion-label>
-    <ion-input required type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label style="font-family: Kanit;">ประเภท</ion-label>
-    <ion-select value="R">
-      <ion-select-option value="R">รายรับ</ion-select-option>
-      <ion-select-option value="E">รายจ่าย</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label style="font-family: Kanit;">หมวดหมู่</ion-label>
-    <ion-select value="1" okText="Okay" cancelText="Dismiss" interface="popover">
-      <ion-select-option value="1" style="font-family: Kanit;">ค่าใช้จ่ายทั่วไป</ion-select-option>
-      <ion-select-option value="2" style="font-family: Kanit;">รายจ่ายประจำ</ion-select-option>
-      <ion-select-option value="3" style="font-family: Kanit;">รายรับประจำ</ion-select-option>
-      <ion-select-option value="4" style="font-family: Kanit;">ครอบครัว</ion-select-option>
-      <ion-select-option value="5" style="font-family: Kanit;">อาหาร/เครื่องดื่ม</ion-select-option>
-      <ion-select-option value="6" style="font-family: Kanit;">บันเทิง</ion-select-option>
-      <ion-select-option value="7" style="font-family: Kanit;">เที่ยว</ion-select-option>
-      <ion-select-option value="8" style="font-family: Kanit;">รายได้เสริม</ion-select-option>
-      <ion-select-option value="9" style="font-family: Kanit;">ชำระบิล</ion-select-option>
-      <ion-select-option value="0" style="font-family: Kanit;">อื่นๆ</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating" style="font-family: Kanit;">รายละเอียด</ion-label>
-    <ion-textarea></ion-textarea>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating" style="font-family: Kanit;">จำนวน</ion-label>
-    <ion-input type="number"></ion-input>
-  </ion-item>
+  <form>
+    <ion-item>
+      <ion-label style="font-family: Kanit;">วัน</ion-label>
+      <ion-datetime displayFormat="MM/DD/YY" value="{{date}}" [(ngModel)]="date" name="date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label style="font-family: Kanit;">เวลา</ion-label>
+      <ion-datetime displayFormat="HH:mm:ss" value="{{time}}" [(ngModel)]="time" name="time"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" style="font-family: Kanit;">ชื่อรายการ</ion-label>
+      <ion-input required type="text" [(ngModel)]="ts_name" name="ts_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label style="font-family: Kanit;">ประเภท</ion-label>
+      <ion-select value="R" [(ngModel)]="ts_catagory" name="ts_catagory">
+        <ion-select-option value="R">รายรับ</ion-select-option>
+        <ion-select-option value="E">รายจ่าย</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label style="font-family: Kanit;">หมวดหมู่</ion-label>
+      <ion-select value="1" okText="Okay" cancelText="Dismiss" interface="popover" [(ngModel)]="ts_transaction_type" name="ts_transaction_type">
+        <ion-select-option value="1" style="font-family: Kanit;">ค่าใช้จ่ายทั่วไป</ion-select-option>
+        <ion-select-option value="2" style="font-family: Kanit;">รายจ่ายประจำ</ion-select-option>
+        <ion-select-option value="3" style="font-family: Kanit;">รายรับประจำ</ion-select-option>
+        <ion-select-option value="4" style="font-family: Kanit;">ครอบครัว</ion-select-option>
+        <ion-select-option value="5" style="font-family: Kanit;">อาหาร/เครื่องดื่ม</ion-select-option>
+        <ion-select-option value="6" style="font-family: Kanit;">บันเทิง</ion-select-option>
+        <ion-select-option value="7" style="font-family: Kanit;">เที่ยว</ion-select-option>
+        <ion-select-option value="8" style="font-family: Kanit;">รายได้เสริม</ion-select-option>
+        <ion-select-option value="9" style="font-family: Kanit;">ชำระบิล</ion-select-option>
+        <ion-select-option value="0" style="font-family: Kanit;">อื่นๆ</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" style="font-family: Kanit;">รายละเอียด</ion-label>
+      <ion-textarea [(ngModel)]="ts_detail" name="ts_detail"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating" style="font-family: Kanit;">จำนวน</ion-label>
+      <ion-input type="number" [(ngModel)]="ts_cost" name="ts_cost"></ion-input>
+    </ion-item>
+  </form>
 </ion-content>

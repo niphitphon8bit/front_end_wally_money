@@ -17,6 +17,10 @@ const routes: Routes = [
   },  {
     path: 'transaction-insert',
     loadChildren: () => import('./transaction-insert/transaction-insert.module').then( m => m.TransactionInsertPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   }
 
 
