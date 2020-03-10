@@ -28,7 +28,7 @@
       <ion-item-sliding *ngFor="let record of records">
         <ion-item>
           <ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
-            {{record.ts_date}}
+            {{record.ts_time}}
           </ion-label>
           <ion-label style="text-align: center;font-size: 60%;font-family: Kanit;">
             {{record.ts_name}}
@@ -37,7 +37,6 @@
             [ngClass]="{greenClass : record.ts_category == 'E', redClass : record.ts_category != 'E'}">
             ฿ {{record.ts_cost}}
           </ion-label>
-          <!-- <ion-toggle color="success" [(ngModel)]="major.mj_status" (click)="change_status_major(major)"></ion-toggle> -->
         </ion-item>
         <ion-item-options side="end">
           <ion-item-option color="warning">
@@ -50,5 +49,4 @@
       </ion-item-sliding>
     </ion-card-content>
   </ion-card>
-  <!-- <ion-button expand="full">เพิ่มรายการรายรับ - รายจ่าย</ion-button> -->
 </ion-content>
