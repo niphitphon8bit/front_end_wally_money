@@ -1,12 +1,33 @@
-import { Component } from '@angular/core';
-
+import { TransactionInsertPage } from './../transaction-insert/transaction-insert.page';
+import { Component, OnInit } from '@angular/core';
+import { ModalController, AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
   styleUrls: ['tabs.page.scss']
 })
-export class TabsPage {
+export class TabsPage implements OnInit {
 
-  constructor() {}
+  constructor(
+
+    private modalController: ModalController,
+    private alertController: AlertController
+  ) { }
+
+  ngOnInit() {
+  }
+
+  async transaction_insert() {
+    const modal = await this.modalController.create({
+      component: TransactionInsertPage
+    })
+
+    modal.onDidDismiss().then((status) => {
+      // if(status != null){
+      //   this.get_all_major()
+      // }
+    });
+    return await modal.present()
+  }
 
 }
