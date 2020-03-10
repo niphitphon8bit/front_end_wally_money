@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+//import { NavController } from '@ionic/angular';
+//import { AboutPage } from './tabs/tabs.module';
 
 @Component({
   selector: 'app-customer-name',
@@ -8,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerNamePage implements OnInit {
 
-  private name: string ;
-  private lastname: string;
+
+  private username: string;
+  private password: string;
 
 
   constructor() { }
@@ -17,5 +19,12 @@ export class CustomerNamePage implements OnInit {
   ngOnInit() {
   
   }
+
+//  update_customer() {
+ // this.navCtrl.push(AboutPage, 
+//    {firstName: name}
+ // );
+//}
+
 
 }

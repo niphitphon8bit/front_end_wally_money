@@ -14,7 +14,15 @@ const routes: Routes = [
   {
     path: 'customer-name',
     loadChildren: () => import('./customer-name/customer-name.module').then( m => m.CustomerNamePageModule)
+  },  {
+    path: 'transaction-insert',
+    loadChildren: () => import('./transaction-insert/transaction-insert.module').then( m => m.TransactionInsertPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   }
+
 
 
 ];
