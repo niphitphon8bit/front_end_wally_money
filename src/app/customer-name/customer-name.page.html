@@ -10,24 +10,33 @@
 <ion-content >
   <ion-card>
     <ion-card-header>
-      <ion-card-title id ="title_name"  style="text-align: center;" >Sign in</ion-card-title>
+      <ion-card-title id ="title_name"  style="text-align: center;">ยินดีต้อนรับเข้าสู่ Wally money</ion-card-title>
     </ion-card-header>
   
     <ion-card-content>
-      <h1 id ="textsize">Username</h1>
+     <br>
   <ion-item>
     
-    <ion-input placeholder="" name="name"> </ion-input>
+    <ion-input placeholder="ชื่อผู้ใช้งาน" [(ngModel)]="username" name="username"  > </ion-input>
   </ion-item>
   <br>
-  <h1 id ="textsize">Password</h1>
+
   <ion-item>
     <br>
-    <ion-input placeholder="" name="lastname"> </ion-input>
+    <ion-input placeholder="รหัสผ่าน" [(ngModel)]="password" name="password" > </ion-input>
   </ion-item>
     </ion-card-content>
     <br>
-   <ion-button color="primary"  routerLink="/main_tab" expand="block" >ยืนยัน</ion-button>  <!-- /*routerLink="/main_tab" -->
+
+    <ion-card-content>
+       
+        <div><ion-button style="--background:#ffc409" routerLink="/main_tab"  size="default" expand="block" (click)="update_customer()" id="reg" fill="clear">ยืนยัน</ion-button></div>
+        <div><ion-button  routerLink="/register" size="default"  expand="block" id="reg" fill="clear">ลงทะเบียน</ion-button></div>
+    </ion-card-content>
+
+
+
+
    <br>
   </ion-card> 
  
