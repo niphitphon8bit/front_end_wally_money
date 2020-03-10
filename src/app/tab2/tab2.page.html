@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar color="warning">
     <ion-title align="center">
       Wally Money
@@ -6,105 +6,47 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" >
+<ion-content [fullscreen]="true" style="background-color: antiquewhite;">
 
-  <ion-card>
+  <ion-card id="show_balance" style=" background-color: rgb(35, 34, 34);">
     <ion-card-header>
-      <ion-card-subtitle align="center">Mr. Niphitphon Thanatkulkit</ion-card-subtitle>
-      <ion-card-subtitle align="center">ยอดเงินคงเหลือ</ion-card-subtitle>
+      <ion-card-subtitle align="center" style="color:antiquewhite">Mr. {{full_name}}</ion-card-subtitle>
+      <ion-card-subtitle align="center" style="font-size: 16px;color:antiquewhite">ยอดเงินคงเหลือ</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content align="center">
-      <h1>1000</h1>
+      <h1 style="color:antiquewhite">฿ {{ac_balance}}</h1>
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card id="history" style="background-color: rgb(35, 34, 34);">
     <ion-card-header>
-      <ion-card-subtitle align="center">ประวัติการทำธุรกรรม</ion-card-subtitle>
+      <ion-card-subtitle align="center" style="font-size: 16px;color:antiquewhite">
+        <ion-icon name="time-outline"></ion-icon> รายการธุรกรรมล่าสุด
+      </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <ion-list>
+      <ion-item-sliding *ngFor="let record of records">
         <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ซื้อข้าวไข่เจียว </ion-label>
-          <ion-label color="danger" style="text-align: right;">฿ 45</ion-label>
+          <ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
+            {{record.ts_date}}
+          </ion-label>
+          <ion-label style="text-align: center;font-size: 60%;font-family: Kanit;">
+            {{record.ts_name}}
+          </ion-label>
+          <ion-label style="text-align: right;font-size: 60%;font-family: Kanit;"
+            [ngClass]="{greenClass : record.ts_category == 'E', redClass : record.ts_category != 'E'}">
+            ฿ {{record.ts_cost}}
+          </ion-label>
         </ion-item>
-        
-        <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ซื้อเสื้อผ้า</ion-label>
-          <ion-label color="danger" style="text-align: right;">฿ 109</ion-label>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ซื้อรองเท้า</ion-label>
-          <ion-label color="danger" style="text-align: right;">฿ 499</ion-label>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ได้รับเงิน</ion-label>
-          <ion-label color="success" style="text-align: right;">฿ 300</ion-label>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ได้รับเงิน</ion-label>
-          <ion-label color="success" style="text-align: right;">฿ 300</ion-label>
-        </ion-item>
-      
-        <ion-item>
-              <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ได้รับเงิน</ion-label>
-          <ion-label color="success" style="text-align: right;">฿ 300</ion-label>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ได้รับเงิน</ion-label>
-          <ion-label color="success" style="text-align: right;">฿ 300</ion-label>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ได้รับเงิน</ion-label>
-          <ion-label color="success" style="text-align: right;">฿ 300</ion-label>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ได้รับเงิน</ion-label>
-          <ion-label color="success" style="text-align: right;">฿ 300</ion-label>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ได้รับเงิน</ion-label>
-          <ion-label color="success" style="text-align: right;">฿ 300</ion-label>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ได้รับเงิน</ion-label>
-          <ion-label color="success" style="text-align: right;">฿ 300</ion-label>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ได้รับเงิน</ion-label>
-          <ion-label color="success" style="text-align: right;">฿ 300</ion-label>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label style="text-align: left;">18/02/2563</ion-label>
-          <ion-label style="text-align: center;">ได้รับเงิน</ion-label>
-          <ion-label color="success" style="text-align: right;">฿ 300</ion-label>
-        </ion-item>
-        
-        </ion-list>
-      </ion-card-content>
+        <ion-item-options side="end">
+          <ion-item-option color="warning">
+            <ion-icon name="create"></ion-icon>
+          </ion-item-option>
+          <ion-item-option disabled color="danger">
+            <ion-icon name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-card-content>
   </ion-card>
-
-  <ion-button expand="full">เพิ่มรายการรายรับ - รายจ่าย</ion-button>
 </ion-content>
