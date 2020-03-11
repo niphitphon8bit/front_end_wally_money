@@ -25,6 +25,7 @@ export class Tab2Page implements OnInit {
   public full_name : string;
   public ac_balance: any = 1000;
   public max_cost: any;
+  public transaction : any = [];
   public records: any = [
     {
       ts_id: 1,
@@ -71,7 +72,7 @@ export class Tab2Page implements OnInit {
     this.ac_fname = "Niphitphon";
     this.ac_lname = "Thanatkulkit";
     this.full_name = `${this.ac_lname} ${this.ac_fname[0]}.`;
-    this.get_transaction();
+    // this.get_transaction();
   }
 
   ionViewWillEnter(){
@@ -80,8 +81,18 @@ export class Tab2Page implements OnInit {
 
   get_transaction(){
     this.TransactionService.get_all_transaction().subscribe((res) =>{
-      console.log(res);
+      res.forEach(element => {
+        this.transaction.push({
+          ts_id: element.ts_id,
+          ts_name: element.ts_name,
+          ts_cost: element.ts_cost,
+          ts_detail: element.ts_detail,
+          ts_category: element.ts_category,
+          ts_time: element.ts_date
+        })
+      })
     })
+    console.log(this.transaction);
   }
 
 }
