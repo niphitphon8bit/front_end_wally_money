@@ -80,6 +80,7 @@ export class Tab2Page implements OnInit {
   }
 
   get_transaction(){
+    this.transaction = [];
     this.TransactionService.get_all_transaction().subscribe((res) =>{
       res.forEach(element => {
         this.transaction.push({
