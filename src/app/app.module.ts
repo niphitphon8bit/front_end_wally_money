@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { Http, HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginPage } from './login/login.page';
+import { HomePage } from './homepage/homepage.page';
 
 
 
@@ -39,7 +39,7 @@ import { LoginPage } from './login/login.page';
     { provide: RouteReuseStrategy,
        useClass: IonicRouteStrategy 
       },
-      LoginPage
+      HomePage
   ],
   bootstrap: [AppComponent]
 })
