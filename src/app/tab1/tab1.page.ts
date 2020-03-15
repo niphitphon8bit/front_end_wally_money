@@ -10,7 +10,7 @@ export class Tab1Page {
   constructor() {}
 
   doughnutChartLabels = ['รายรับ', 'รายจ่าย'];
-  doughnutChartData = [10000,5000];
+  doughnutChartData = [3,5];
   doughnutChartType = 'pie';
   donutOptions: any = {
       legend: {
