@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { Http, HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginPage } from './login/login.page';
+import { HomePage } from './homepage/homepage.page';
 
 
 @NgModule({
@@ -41,7 +41,7 @@ import { LoginPage } from './login/login.page';
       useClass: IonicRouteStrategy
     },
     MainMenuPage,
-	LoginPage
+	HomePage
 
   ],
   bootstrap: [AppComponent]
