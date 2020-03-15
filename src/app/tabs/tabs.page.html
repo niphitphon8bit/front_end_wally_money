@@ -1,4 +1,5 @@
-<ion-fab style="margin-bottom: 75px;margin-right: 20px;" vertical="bottom" horizontal="end" slot="fixed" (click)="transaction_insert()">
+<ion-fab style="margin-bottom: 75px;margin-right: 20px;" vertical="bottom" horizontal="end" slot="fixed"
+  (click)="modal_transaction()">
   <ion-fab-button color="warning">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>
@@ -10,13 +11,17 @@
       <ion-icon name="wallet-outline"></ion-icon>
       <ion-label>สรุปยอดค่าใช้จ่าย</ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="tab2">
+    <ion-tab-button tab="main_menu">
       <ion-icon name="grid-outline"></ion-icon>
       <ion-label>หน้าหลัก</ion-label>
     </ion-tab-button>
     <ion-tab-button tab="tab3">
       <ion-icon name="document-text-outline"></ion-icon>
       <ion-label>ประวัติการใช้งาน</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="tab4">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>บัญชีผู้ใช้</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
