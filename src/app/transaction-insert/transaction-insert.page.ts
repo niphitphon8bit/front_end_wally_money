@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController , NavController} from '@ionic/angular';
 import { CurrencyPipe } from '@angular/common';
 
 @Component({
@@ -16,21 +16,31 @@ export class TransactionInsertPage implements OnInit {
   public ts_cost: number;
   public ts_date: string;
   public ts_detail: string;
-  public ts_catagory: string;
+  public ts_category: string;
   public ts_transaction_type: string;
 
 
 
   constructor(
     private modalCtrl: ModalController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
     
-    this.ts_catagory = "R";
+    this.ts_category = "R";
     this.ts_transaction_type = "1";
 
+  }
+
+  ionViewWillEnter(){
+    console.log("insert page");
+  }
+
+  ionViewWillLeave(){
+    console.log("leaving insert page");
+    this.navCtrl.navigateRoot(['/main_tab']);
   }
 
   public closeModal() {
@@ -38,7 +48,7 @@ export class TransactionInsertPage implements OnInit {
   }
 
   public insert_transaction() {
-    console.log(this.ts_name,this.ts_cost,this.ts_detail,this.ts_catagory,this.ts_transaction_type);
+    console.log(this.ts_name,this.ts_cost,this.ts_detail,this.ts_category,this.ts_transaction_type);
     this.ts_date = this.date + " " + this.time;
     this.modalCtrl.dismiss({
       'dismissed': true,
@@ -46,10 +56,11 @@ export class TransactionInsertPage implements OnInit {
       'time': this.time,
       'ts_name': this.ts_name,
       'ts_transaction_type': this.ts_transaction_type,
-      'ts_catagory': this.ts_catagory,
+      'ts_category': this.ts_category,
       'ts_detail': this.ts_detail,
       'ts_cost': this.ts_cost,
     })
+    this.navCtrl.navigateRoot(['/main_tab']);
   }
 
 }

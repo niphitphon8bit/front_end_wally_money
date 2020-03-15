@@ -1,24 +1,19 @@
 <ion-header>
-  <ion-toolbar color="warning">
-    <ion-title ></ion-title>
+  <ion-toolbar color="dark">
+    <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content  >
-  <ion-card >
-    <ion-card-header >
-      <ion-card-title id="money" style="text-align: center;">Wally Money</ion-card-title><br>
-      <ion-img width="80" height="80" src="assets/img/S__9576507.jpg"></ion-img>
-    </ion-card-header>
-    <ion-card-content>
-
-      <ion-button style="--background:#ffc409"  routerLink="/customer-name"   expand="block" id="login" fill="clear"><b>เข้าสู่ระบบ</b></ion-button>
-
-      <ion-button   routerLink="/register"  expand="block" id="login" fill="clear"><b>ลงทะเบียน</b></ion-button>
-
-    </ion-card-content>
-  </ion-card >
-
-
+<ion-content>
+  <p id="money" style="text-align: center;font-size: 40px;margin: 0px">Wally Money</p><br>
+  <ion-img src="assets/img/S__9576507.jpg"></ion-img>
+  <section>
+    <ion-button size="large" style="--background:#ffc409;" shape="round" routerLink="/customer-name" id="login" fill="clear">
+      <b>เข้าสู่ระบบ</b>
+    </ion-button>
+  </section>
+  <section>
+    <ion-button color="dark" routerLink="/register" size="large" shape="round" id="login"><b>ลงทะเบียน</b></ion-button>
+  </section>
 </ion-content>

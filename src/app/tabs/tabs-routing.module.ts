@@ -7,7 +7,7 @@ const routes: Routes = [
     path: 'tabs',
     component: TabsPage,
     children: [
-      { path: '', redirectTo: 'tabs/tab2', pathMatch: 'full' },
+      { path: '', redirectTo: 'tabs/main_menu', pathMatch: 'full' },
       {
         path: 'tab1',
         children: [
@@ -19,12 +19,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab2',
+        path: 'main_menu',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import('../main-menu/main-menu.module').then(m => m.MainMenuPageModule)
           }
         ]
       },
@@ -40,14 +40,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'tabs/tab2',
+        redirectTo: 'tabs/main_menu',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: 'tabs/tab2',
+    redirectTo: 'tabs/main_menu',
     pathMatch: 'prefix'
   }
 ];
