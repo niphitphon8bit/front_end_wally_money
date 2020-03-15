@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-//import { NavController } from '@ionic/angular';
-//import { AboutPage } from './tabs/tabs.module';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavController, NavParams, BooleanValueAccessor } from '@ionic/angular';
+import { Router, NavigationExtras } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-customer-name',
@@ -9,22 +11,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerNamePage implements OnInit {
 
+  private username: string
+  private password: string
+  private user: any
 
-  private username: string;
-  private password: string;
+  constructor(
+    public navCtrl: NavController,
+    private router: Router
 
+  ) {
 
-  constructor() { }
-
-  ngOnInit() {
-  
   }
 
-//  update_customer() {
- // this.navCtrl.push(AboutPage, 
-//    {firstName: name}
- // );
-//}
+  ngOnInit() {
+  }
 
+  clickmain() {
+    let navigationExtras: NavigationExtras = {
+      state: {
+        username: this.username,
+        password: this.password
+      }
+    };
+    console.log(navigationExtras)
+    this.router.navigate(['main_tab'], navigationExtras);
+
+  }
 
 }

@@ -2,7 +2,7 @@
   <ion-toolbar color="warning">
     <ion-title align="center"> Wally money </ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+     
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -23,18 +23,19 @@
 
   <ion-item>
     <br>
-    <ion-input placeholder="รหัสผ่าน" [(ngModel)]="password" name="password" > </ion-input>
+    <ion-input placeholder="รหัสผ่าน" [(ngModel)]="password" name="password" type="password"> </ion-input>
   </ion-item>
     </ion-card-content>
     <br>
 
     <ion-card-content>
        
-        <div><ion-button style="--background:#ffc409" routerLink="/main_tab"  size="default" expand="block" (click)="update_customer()" id="reg" fill="clear">ยืนยัน</ion-button></div>
+        <div><ion-button style="--background:#ffc409" (click)="clickmain()" size="default" expand="block"  id="reg" fill="clear">ยืนยัน</ion-button></div>
         <div><ion-button  routerLink="/register" size="default"  expand="block" id="reg" fill="clear">ลงทะเบียน</ion-button></div>
     </ion-card-content>
 
-
+    
+<!-- routerLink="/main_tab" href="/main_tab" routerDirection="forward" -->
 
 
    <br>

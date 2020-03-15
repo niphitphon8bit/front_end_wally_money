@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { Http, HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginPage } from './login/login.page';
+
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     SplashScreen,
     { provide: RouteReuseStrategy,
        useClass: IonicRouteStrategy 
-      }
+      },
+      LoginPage
   ],
   bootstrap: [AppComponent]
 })
