@@ -1,3 +1,4 @@
+import { MainMenuPage } from './main-menu/main-menu.page';
 import { TransactionInsertPage } from './transaction-insert/transaction-insert.page';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -10,6 +11,7 @@ import { AppComponent } from './app.component';
 import { Http, HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HomePage } from './homepage/homepage.page';
 
 
 @NgModule({
@@ -34,9 +36,13 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy,
-       useClass: IonicRouteStrategy 
-      }
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
+    },
+    MainMenuPage,
+	HomePage
+
   ],
   bootstrap: [AppComponent]
 })

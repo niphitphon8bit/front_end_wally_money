@@ -1,12 +1,18 @@
-
-
-  #money {
- 
-    font-size: 2em;
-    margin: center;
+#title_name{
+  margin: center;
     font-family: Kanit;
-  }
+   font-size: 30px;
+}
 
-  #login {
-    color:black;
-  }
+#textsize{
+  font-size: 22px;
+  font-family: Kanit;
+}
+
+#reg {
+  color:black;
+}
+
+* {
+  font-family: Kanit;
+}

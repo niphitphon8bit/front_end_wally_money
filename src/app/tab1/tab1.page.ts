@@ -9,14 +9,20 @@ export class Tab1Page {
 
   constructor() {}
 
-  doughnutChartLabels = ['ครอบครัว', 'เงินเดือน', 'รายจ่ายส่วนตัว'];
-  doughnutChartData = [350, 450, 100];
-  doughnutChartType = 'doughnut';
+  doughnutChartLabels = ['รายรับ', 'รายจ่าย'];
+  doughnutChartData = [3,5];
+  doughnutChartType = 'pie';
   donutOptions: any = {
       legend: {
         display: false,
         position: 'right'
-      }
+      },
+      pieceLabel: {
+        render: 'value',  // สามารถเปลี่ยนการตั้งค่าตามต้องการได้ 'value','label','percentage'
+        fontSize: 10,
+        fontStyle: 'bold',
+        fontColor: '#FFF',
+      },
     };
 }
 
