@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title align="center" style="padding-right:80px;">เพิ่มรายการ</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="insert_transaction()">
+      <ion-button [routerLink]="['/main_tab']" routerLinkActive="router-link-active" (click)="insert_transaction()">
         บันทึก
       </ion-button>
     </ion-buttons>

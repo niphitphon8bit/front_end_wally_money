@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionService } from './../service/transaction.service';
+import { TransactionService } from '../service/transaction.service';
 // import { NumberValueAccessor } from '@angular/forms';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss'],
+  selector: 'app-main-menu',
+  templateUrl: 'main-menu.page.html',
+  styleUrls: ['main-menu.page.scss'],
   styles: [
     `
     .greenClass { color: green }
@@ -13,7 +13,7 @@ import { TransactionService } from './../service/transaction.service';
     `
   ]
 })
-export class Tab2Page implements OnInit {
+export class MainMenuPage implements OnInit {
   
   constructor(
     private TransactionService: TransactionService,
@@ -76,6 +76,7 @@ export class Tab2Page implements OnInit {
   }
 
   ionViewWillEnter(){
+    console.log("enter");
     this.get_transaction();
   }
 
@@ -95,6 +96,20 @@ export class Tab2Page implements OnInit {
     })
     console.log(this.transaction);
   }
+
+  public formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
 }
 
