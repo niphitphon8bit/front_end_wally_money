@@ -3,7 +3,10 @@ import { ModalController, AlertController } from '@ionic/angular';
 import { CurrencyPipe } from '@angular/common';
 import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import {TransactionService} from '../service/transaction.service';
 import "rxjs/add/operator/map";
+import { MainMenuPage } from '../main-menu/main-menu.page'
+import { from } from 'rxjs';
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -19,35 +22,76 @@ import "rxjs/add/operator/map";
 
 
 export class Tab3Page implements OnInit {
+
+  constructor(
+    private TransactionService:TransactionService,
+    private MainMenuPage : MainMenuPage
+  ){
+
+  }
   public history_type: string;
+  public transaction_by_account : any = [];
   users = [];
   page = 0;
   maximumPages = 3;
 
   
-  constructor(public navCtrl: NavController, private httpClient: HttpClient) {
-    this.loadUsers();
-  }
-  loadUsers(event?){
-    this.httpClient.get(`https://randomuser.me/api/?results=20&page=${this.page}`)
-  .subscribe(res=>{
-    console.log(res);
-    this.users = this.users.concat(res['result']);
+  // constructor(public navCtrl: NavController, private httpClient: HttpClient) {
+  //   this.loadUsers();
+  // }
+  // loadUsers(event?){
+  //   this.httpClient.get(`https://randomuser.me/api/?results=20&page=${this.page}`)
+  // .subscribe(res=>{
+  //   console.log(res);
+  //   this.users = this.users.concat(res['result']);
 
-    if (event) {
-      event.complete();
-    }
-   });
-  }
-  loadMore(event){
-    console.log(event);
-    this.page++;
-    this.loadUsers(event);
-    if(this.page === this.maximumPages){
-      event.enable(false);
-    }
+  //   if (event) {
+  //     event.complete();
+  //   }
+  //  });
+  // }
+  // loadMore(event){
+  //   console.log(event);
+  //   this.page++;
+  //   this.loadUsers(event);
+  //   if(this.page === this.maximumPages){
+  //     event.enable(false);
+  //   }
 
+  // }
+
+  ionViewWillEnter(){
+    console.log("enter");
+    this.get_transaction_by_account();
   }
+
+  get_transaction_by_account(){
+    this.transaction_by_account = [];
+    this.TransactionService.get_transaction_by_account_id().subscribe((res) =>{
+      res.forEach(element => {
+        this.transaction_by_account.push({
+          ts_id: element.ts_id,
+          ts_name: element.ts_name,
+          ts_cost: element.ts_cost,
+          ts_detail: element.ts_detail,
+          ts_category: element.ts_category,
+          ts_date: this.MainMenuPage.formatDate(element.ts_date.substr(0,9))
+
+        })
+      })
+    })
+    console.log(this.transaction_by_account);
+  }
+
+
+
+
+
+
+
+
+
+
   public transactions2: any = [
     {
       ts_id: 1,

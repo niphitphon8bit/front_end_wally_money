@@ -31,6 +31,7 @@ export class TransactionService {
   }
 
   get_transaction_by_account_id(){
+    return this.http.get(`http://localhost:3000/get_transaction_by_key/2`).map((res) => res.json());
 
   }
 }
