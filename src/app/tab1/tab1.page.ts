@@ -11,7 +11,7 @@ export class Tab1Page {
 
   doughnutChartLabels = ['รายรับ', 'รายจ่าย'];
   doughnutChartData = [3,5];
-  doughnutChartType = 'pie';
+  doughnutChartType = 'doughnut';
   donutOptions: any = {
       legend: {
         display: false,
@@ -24,5 +24,22 @@ export class Tab1Page {
         fontColor: '#FFF',
       },
     };
+
+
+  reChartData = [300,55];
+  reChartType = 'doughnut';
+  reChartLabels = ['รายรับ','รายจ่าย'];
+  reOption: any = {
+    legend: {
+      display: false,
+      position: 'right'
+    },
+    pieceLabel: {
+      render: 'value',  // สามารถเปลี่ยนการตั้งค่าตามต้องการได้ 'value','label','percentage'
+      fontSize: 12,
+      fontStyle: 'bold',
+      fontColor: '#FFF',
+    }
+  };
 }
 
