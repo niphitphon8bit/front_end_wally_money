@@ -1,3 +1,4 @@
+import { Account } from './Pattern';
 import { MainMenuPage } from './main-menu/main-menu.page';
 import { TransactionInsertPage } from './transaction-insert/transaction-insert.page';
 import { NgModule } from '@angular/core';
@@ -12,7 +13,6 @@ import { Http, HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomePage } from './homepage/homepage.page';
-
 
 @NgModule({
   declarations: [
@@ -41,7 +41,8 @@ import { HomePage } from './homepage/homepage.page';
       useClass: IonicRouteStrategy
     },
     MainMenuPage,
-	HomePage
+    HomePage,
+    Account
 
   ],
   bootstrap: [AppComponent]
