@@ -13,6 +13,7 @@ export class LoginPage implements OnInit {
 
   private username: string
   private password: string
+  private password2: string
   private user: any
 
   constructor(
@@ -30,7 +31,8 @@ export class LoginPage implements OnInit {
     let navigationExtras: NavigationExtras = {
       state: {
         username: this.username,
-        password: this.password
+        password: this.password,
+        password2: this.password2
       }
     };
     console.log(navigationExtras)
