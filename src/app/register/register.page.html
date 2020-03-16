@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-title>Wally money</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title id ="title_name"  style="text-align: center;" >สมัครใช้งาน</ion-card-title>
+    </ion-card-header>
+  <ion-card-content>
+    <h1 id ="textsize">กรุณาระบุข้อมูล</h1>
+<ion-item>
+  <ion-input placeholder="ชื่อผู้ใช้งาน" name="name" id="textname"> </ion-input>
+</ion-item>
+<br>
+
+<ion-item>
+  <ion-input placeholder="รหัสผ่าน" name="lastname" id="textname"> </ion-input>
+</ion-item>
+<br>
+
+<ion-item>
+
+  <ion-input placeholder="รหัสผ่าน อีกครั้ง" name="lastname" id="textname"> </ion-input>
+</ion-item>
+
+  </ion-card-content>
+
+  <ion-row>
+    <ion-col> 
+  <ion-button style="--background:#ffc409"  routerLink="/login" size="default" expand="block" fill="clear"id="reg">ย้อนกลับ</ion-button>  
+</ion-col>
+<ion-col>
+  <ion-button style="--background:#ffc409"  routerLink="/customer-name"  size="default" expand="block" fill="clear" id="reg">ยืนยัน</ion-button>
+</ion-col>
+</ion-row>
+
+  <br>
+
+</ion-card>
+
+
+
+</ion-content>
