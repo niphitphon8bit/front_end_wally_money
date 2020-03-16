@@ -4,17 +4,23 @@ import { Injectable } from '@angular/core';
 
 export class Account {
 
+    private ac_id;
     private ac_fname;
     private ac_lname;
     private ac_username;
     private ac_password;
     private transaction: Transaction[];
 
-    public set_value(f,l,u,p){
+    public set_value(i,f,l,u,p){
+        this.ac_id = i;
         this.ac_fname = f;
         this.ac_lname = l;
         this.ac_username = u;
         this.ac_password = p;
+    }
+
+    public get_ac_id(){
+        return this.ac_id;
     }
 
     public get_ac_fname(){

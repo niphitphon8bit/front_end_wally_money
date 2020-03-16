@@ -1,7 +1,7 @@
+import { Account } from './../Pattern';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavController, NavParams, BooleanValueAccessor } from '@ionic/angular';
 import { Router, NavigationExtras } from '@angular/router';
-
 
 
 @Component({
@@ -17,6 +17,7 @@ export class LoginPage implements OnInit {
   private user: any
 
   constructor(
+    public account : Account,
     public navCtrl: NavController,
     private router: Router
 
