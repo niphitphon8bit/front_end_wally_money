@@ -67,21 +67,103 @@ export class TabsPage implements OnInit {
     return [year, month, day].join('-');
   }
 
-  public form_time(){
+  public form_time() {
 
   }
 
-  public transaction_insert(status){
-   let ts_name = status.data.ts_name
-   let ts_cost = status.data.ts_cost
-   let ts_date = `${status.data.date} ${status.date.time}`
-   let ts_category = status.data.ts_category
-   let ts_ac_id = 5
-   let ts_type_id = status.data.ts_transaction_type
-   this
+  public transaction_insert(status) {
+    let ts_name = status.data.ts_name
+    let ts_cost = status.data.ts_cost
+    let ts_date = `${status.data.date} ${status.date.time}`
+    let ts_detail = `${status.data.ts_detail}`
+    let ts_category = status.data.ts_category
+    let ts_ac_id = 5
+    let ts_type_id = status.data.ts_transaction_type
+
   }
 
 }
+
+
+class Account {
+  private ac_fname;
+  private ac_lname;
+  private ac_username;
+  private ac_password;
+  private transaction: Transaction;
+
+  // public 
+}
+
+abstract class Transaction {
+
+  private ts_name: string;
+  private ts_cost: string;
+  private ts_date: any;
+  private ts_detail: string;
+  private ts_category: string;
+  private ts_ac_id: any;
+  private ts_type_id: any;
+
+  protected get_ts_name() {
+    return this.ts_name;
+  }
+
+  protected get_ts_cost() {
+    return this.ts_cost;
+  }
+
+  protected get_ts_date() {
+    return this.ts_date;
+  }
+
+  protected get_ts_detail() {
+    return this.ts_detail;
+  }
+
+  protected get_ts_category() {
+    return this.ts_category;
+  }
+
+  protected get_ts_ac_id() {
+    return this.ts_ac_id;
+  }
+
+  protected get_ts_type_id() {
+    return this.ts_type_id;
+  }
+
+  protected abstract set_transaction_category(): void;
+
+}
+
+class transaction_Revenue extends Transaction {
+  protected set_transaction_category() {
+
+  }
+
+}
+
+class transaction_Expend extends Transaction {
+  protected set_transaction_category() {
+
+  }
+}
+
+
+
+interface Transaction_Type_Factory {
+  CreateATransactionType(): string;
+}
+
+class Transaction_type_A implements Transaction_Type_Factory {
+  public name: string;
+  public CreateATransactionType(): string {
+    return this.name = "A";
+  }
+}
+
+
 
 // interface bankAccountRawInput {
 //    amount : number;

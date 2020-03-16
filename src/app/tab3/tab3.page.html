@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar color="dark">
     <ion-title align="center" style="color: white;">Wally Money</ion-title>
 
@@ -39,48 +39,48 @@
     </ion-card-content>
   </ion-card>
 
-<ion-toolbar translucent>
-  <ion-segment value="day" class="ios in-toolbar hydrated" (ionChange)="segmentChanged($event)">
-    <ion-segment-button value="day"
-      class="ios in-toolbar in-segment segment-button-has-label segment-button-has-label-only segment-button-layout-icon-top ion-activatable ion-activatable-instant ion-focusable hydrated segment-button-checked">
-      <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">วัน</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="month"
-      class="ios in-toolbar in-segment segment-button-has-label segment-button-has-label-only segment-button-layout-icon-top ion-activatable ion-activatable-instant ion-focusable hydrated segment-button-after-checked">
-      <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">เดือน</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="other"
-    class="ios in-toolbar in-segment segment-button-has-label segment-button-has-label-only segment-button-layout-icon-top ion-activatable ion-activatable-instant ion-focusable hydrated segment-button-after-checked">
-    <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">อื่น ๆ</ion-label>
-  </ion-segment-button>
-  </ion-segment>
-</ion-toolbar>
+  <ion-toolbar translucent>
+    <ion-segment value="day" class="ios in-toolbar hydrated" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="day"
+        class="ios in-toolbar in-segment segment-button-has-label segment-button-has-label-only segment-button-layout-icon-top ion-activatable ion-activatable-instant ion-focusable hydrated segment-button-checked">
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">วัน</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="month"
+        class="ios in-toolbar in-segment segment-button-has-label segment-button-has-label-only segment-button-layout-icon-top ion-activatable ion-activatable-instant ion-focusable hydrated segment-button-after-checked">
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">เดือน</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="other"
+        class="ios in-toolbar in-segment segment-button-has-label segment-button-has-label-only segment-button-layout-icon-top ion-activatable ion-activatable-instant ion-focusable hydrated segment-button-after-checked">
+        <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">อื่น ๆ</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
 
 
-<ion-content>
-
-  
-<ion-list *ngFor="let test of transaction_by_account">
-<ion-item>
-<ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
-    {{test.ts_date}}
-  </ion-label>
-<ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
-  {{test.ts_name}}
-</ion-label>
-</ion-item>
-</ion-list>
-</ion-content>
+  <ion-content>
 
 
+    <ion-list *ngFor="let test of transaction_by_account">
+      <ion-item>
+        <ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
+          {{test.ts_date}}
+        </ion-label>
+        <ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
+          {{test.ts_name}}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 
-<!-- open ion-content -->
 
-<!-- <ion-virtual-scroll [items]="users" approxItemHeight="70px" [headerFn]="separateLetter">
+
+  <!-- open ion-content -->
+
+  <!-- <ion-virtual-scroll [items]="users" approxItemHeight="70px" [headerFn]="separateLetter">
 
 </ion-virtual-scroll> -->
-<!-- <ion-content >
+  <!-- <ion-content >
 <ion-card>
         <ion-item *ngFor="let transactions of transactions2">
         <ion-label style="text-align: left;font-size: 65%;font-family: Kanit;">
@@ -97,7 +97,7 @@
 </ion-infinite-scroll>
 </ion-content>  -->
 
-<!-- close ion-content -->
+  <!-- close ion-content -->
 
   <!-- <div *ngIf="this.history_type == 'day'">
     <ion-item-sliding *ngFor="let transactions of transactions2">
