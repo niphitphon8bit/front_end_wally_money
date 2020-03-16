@@ -69,14 +69,16 @@ export class Tab3Page implements OnInit {
     this.transaction_by_account = [];
     this.TransactionService.get_transaction_by_account_id().subscribe((res) =>{
       res.forEach(element => {
+        let fulldate = new Date(element.ts_date).toLocaleString("en-US", {timeZone: "Asia/Bangkok"});
         this.transaction_by_account.push({
           ts_id: element.ts_id,
           ts_name: element.ts_name,
           ts_cost: element.ts_cost,
           ts_detail: element.ts_detail,
           ts_category: element.ts_category,
-          ts_date: this.MainMenuPage.formatDate(element.ts_date.substr(0,9))
-
+          ts_date: this.MainMenuPage.format_date(fulldate),
+          // ts_date: date,
+          ts_time: this.MainMenuPage.format_time(fulldate),
         })
       })
     })

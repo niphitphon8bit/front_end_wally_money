@@ -14,18 +14,18 @@ import { TransactionService } from '../service/transaction.service';
   ]
 })
 export class MainMenuPage implements OnInit {
-  
+
   constructor(
     private TransactionService: TransactionService,
   ) {
 
-   }
+  }
   public ac_fname: string;
   public ac_lname: string;
-  public full_name : string;
+  public full_name: string;
   public ac_balance: any = 1000;
   public max_cost: any;
-  public transaction : any = [];
+  public transaction: any = [];
   public records: any = [
     {
       ts_id: 1,
@@ -75,41 +75,61 @@ export class MainMenuPage implements OnInit {
     // this.get_transaction();
   }
 
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     console.log("enter");
     this.get_transaction();
   }
 
-  get_transaction(){
+  get_transaction() {
     this.transaction = [];
-    this.TransactionService.get_all_transaction().subscribe((res) =>{
+    this.TransactionService.get_all_transaction().subscribe((res) => {
       res.forEach(element => {
+        let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
+        console.log(fulldate);
+        let date = `${new Date(element.ts_date).getDate()}/${new Date(element.ts_date).getMonth()}/${new Date(element.ts_date).getFullYear()}`;
+        let time = `${new Date(element.ts_date).getHours()}:${new Date(element.ts_date).getMinutes()}:${new Date(element.ts_date).getSeconds()}`;
         this.transaction.push({
           ts_id: element.ts_id,
           ts_name: element.ts_name,
           ts_cost: element.ts_cost,
           ts_detail: element.ts_detail,
           ts_category: element.ts_category,
-          ts_time: element.ts_date
+          ts_time: time,
+          ts_date: date
         })
       })
     })
     console.log(this.transaction);
   }
 
-  public formatDate(date) {
+  public format_date(date) {
     var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
+    if (month.length < 2)
+      month = '0' + month;
+    if (day.length < 2)
+      day = '0' + day;
 
     return [year, month, day].join('-');
-}
+  }
+
+  public format_time(date) {
+    var d = new Date(date),
+      Hours = '' + (d.getHours()),
+      Minutes = '' + d.getMinutes(),
+      second = '' + d.getSeconds();
+    // console.log(second);
+    if (Hours.length < 2)
+      Hours = '0' + Hours;
+    if (Minutes.length < 2)
+      Minutes = '0' + Minutes;
+    if (second.length < 2)
+      second = '0' + second;
+    return [Hours, Minutes, second].join(':');
+  }
 
 }
 

@@ -90,7 +90,7 @@ class Account {
   private ac_lname;
   private ac_username;
   private ac_password;
-  private transaction: Transaction;
+  private transaction: (transaction_Expend | transaction_Revenue)[];
 
   // public 
 }
@@ -104,49 +104,64 @@ abstract class Transaction {
   private ts_category: string;
   private ts_ac_id: any;
   private ts_type_id: any;
+  // public abstract factoryMethod(): Product;
 
-  protected get_ts_name() {
-    return this.ts_name;
+  public create_transaction(name,cost,date,detail,ac_id,type_id){
+    this.set_ts_name(name);
+    this.set_ts_cost(cost);
+    this.set_ts_date(date);
+    this.set_ts_detail(detail);
+    this.set_ts_ac_id(ac_id);
+    this.set_ts_type_id(type_id);
+    this.set_transaction_category();
   }
 
-  protected get_ts_cost() {
-    return this.ts_cost;
+  protected set_ts_name(name) {
+    this.ts_name = name;
   }
 
-  protected get_ts_date() {
-    return this.ts_date;
+  protected set_ts_cost(cost) {
+    this.ts_cost = cost;
   }
 
-  protected get_ts_detail() {
-    return this.ts_detail;
+  protected set_ts_date(date) {
+    this.ts_date = date;
   }
 
-  protected get_ts_category() {
-    return this.ts_category;
+  protected set_ts_detail(detail) {
+    this.ts_detail = detail;
   }
 
-  protected get_ts_ac_id() {
-    return this.ts_ac_id;
+  protected set_ts_category(category) {
+    this.ts_category = category;
   }
 
-  protected get_ts_type_id() {
-    return this.ts_type_id;
+  protected set_ts_ac_id(ac_id) {
+    this.ts_ac_id = ac_id;
+  }
+
+  protected set_ts_type_id(type_id) {
+    this.ts_type_id = type_id;
   }
 
   protected abstract set_transaction_category(): void;
 
+  
+
 }
 
 class transaction_Revenue extends Transaction {
+  
+  
   protected set_transaction_category() {
-
+    this.set_ts_category("R");
   }
 
 }
 
 class transaction_Expend extends Transaction {
   protected set_transaction_category() {
-
+    this.set_ts_category("E");
   }
 }
 
@@ -162,10 +177,3 @@ class Transaction_type_A implements Transaction_Type_Factory {
     return this.name = "A";
   }
 }
-
-
-
-// interface bankAccountRawInput {
-//    amount : number;
-//    interestRate : number;
-// }
