@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-tab1',
@@ -11,6 +11,8 @@ export class Tab1Page {
 
   constructor() {}
 
+  page = "0";
+  
   public segmentChanged(ev: any) {
     if (this.history_type == "re") {
       console.log('Segment changed', ev);
