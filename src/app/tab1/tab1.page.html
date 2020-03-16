@@ -8,24 +8,33 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <ion-card>
+
     <ion-card-header>
       <ion-card-subtitle align="center">อัตราการใช้เงินในแต่ละเดือน</ion-card-subtitle>
     </ion-card-header>
 
-    <ion-toolbar>
-      <ion-segment value="all">
-        <ion-segment-button value="all">รายรับ-รายจ่าย</ion-segment-button>
-        <ion-segment-button value="favorites">ประเภทรายการ</ion-segment-button>
-      </ion-segment>
-    </ion-toolbar>
+    <ion-card-content>
 
-    <canvas baseChart
-    [data]="doughnutChartData"
-    [labels]="doughnutChartLabels"
-    [chartType]="doughnutChartType"
-    [options]="donutOptions"></canvas>
+      <ion-toolbar>
+        <ion-segment value="all">
+          <ion-segment-button value="all">รายรับ-รายจ่าย</ion-segment-button>
+          <ion-segment-button value="favorites">ประเภทรายการ</ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
+      <br>
+      <canvas baseChart
+      [data]="doughnutChartData"
+      [labels]="doughnutChartLabels"
+      [chartType]="doughnutChartType"
+      [options]="donutOptions"></canvas>
+      <br>
+      <select align="right" name="" id="">
+        <option value="">1</option>
+        <option value="">2</option>
+      </select>
+    </ion-card-content>
+
   </ion-card>
-  
+
 </ion-content>
