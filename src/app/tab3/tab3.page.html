@@ -39,9 +39,6 @@
     </ion-card-content>
   </ion-card>
 
-
-
-
 <ion-toolbar translucent>
   <ion-segment value="day" class="ios in-toolbar hydrated" (ionChange)="segmentChanged($event)">
     <ion-segment-button value="day"
@@ -58,17 +55,34 @@
   </ion-segment-button>
   </ion-segment>
 </ion-toolbar>
+
+
+
+<ion-content>
+
+  
+<ion-list *ngFor="let test of transaction_by_account">
+<ion-item>
+<ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
+    {{test.ts_date}}
+  </ion-label>
+<ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
+  {{test.ts_name}}
+</ion-label>
+</ion-item>
+</ion-list>
+</ion-content>
+
+
+
 <!-- open ion-content -->
-<ion-content >
+
 <!-- <ion-virtual-scroll [items]="users" approxItemHeight="70px" [headerFn]="separateLetter">
 
 </ion-virtual-scroll> -->
-
+<!-- <ion-content >
 <ion-card>
         <ion-item *ngFor="let transactions of transactions2">
-          <!-- <ion-avatar slot="start">
-            <img [src]="user.picture.medium">
-          </ion-avatar> -->
         <ion-label style="text-align: left;font-size: 65%;font-family: Kanit;">
           {{transactions.ts_name}}
         </ion-label>
@@ -80,28 +94,10 @@
   </ion-card>
 <ion-infinite-scroll threshold="30%" (ionInfinite)="loadMore($event)">
 <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more Data  ..."></ion-infinite-scroll-content>
-<!-- <ion-infinite-scroll-content loadingSpinner="bubbles"></ion-infinite-scroll-content> -->
 </ion-infinite-scroll>
-
-</ion-content> 
+</ion-content>  -->
 
 <!-- close ion-content -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <!-- <div *ngIf="this.history_type == 'day'">
     <ion-item-sliding *ngFor="let transactions of transactions2">
