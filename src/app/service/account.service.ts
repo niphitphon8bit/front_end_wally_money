@@ -24,7 +24,30 @@ export class AccountService {
       "ac_fname": ac_fname,
       "ac_lname": ac_lname
     }
-    return this.http.post(this.url + "/ac", data).map((res) => res.json());
+    return this.http.post(this.url + "/account_insert", data).map((res) => res.json());
   }
-  
+
+
+  check_login(ac_username:string, ac_password:string){
+    let data = {
+      "ac_username": ac_username,
+      "ac_password": ac_password,
+    }
+    return this.http.post(this.url + "/get_account_login", data).map((res) => res.json());
+  }
+
+
+
+
+regisCheck(ac_username:string){
+  let data = {
+    "ac_username": ac_username
+  }
+  return this.http.post(this.url + "/account_regisCheck", data).map((res) => res.json());
+}
+
+
+
+
+
 }
