@@ -59,7 +59,7 @@
 
 
   <ion-content>
-
+    <!-- 
 
     <ion-list *ngFor="let test of transaction_by_account">
       <ion-item>
@@ -69,79 +69,83 @@
         <ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
           {{test.ts_name}}
         </ion-label>
+        <ion-label style="text-align: right;font-size: 65%;font-family: Kanit;"
+        [ngClass]="{greenClass : test.ts_category == 'E', redClass : test.ts_category != 'E'}">
+        ฿ {{test.ts_cost}}
+      </ion-label>
       </ion-item>
-    </ion-list>
-  </ion-content>
+    </ion-list> -->
 
 
 
-  <!-- open ion-content -->
+    <!-- open ion-content -->
 
-  <!-- <ion-virtual-scroll [items]="users" approxItemHeight="70px" [headerFn]="separateLetter">
+    <!-- <ion-virtual-scroll [items]="users" approxItemHeight="70px" [headerFn]="separateLetter">
 
-</ion-virtual-scroll> -->
-  <!-- <ion-content >
-<ion-card>
-        <ion-item *ngFor="let transactions of transactions2">
+    </ion-virtual-scroll> -->
+    <!-- <ion-content >
+    <ion-card>
+      <ion-item *ngFor="let transactions of transactions2">
         <ion-label style="text-align: left;font-size: 65%;font-family: Kanit;">
           {{transactions.ts_name}}
         </ion-label>
         <ion-label style="text-align: right;font-size: 65%;font-family: Kanit;"
-          [ngClass]="{greenClass : transactions.ts_category == 'E', redClass : transactions.ts_category != 'E'}">
-          ฿ {{transactions.ts_cost}}
-        </ion-label>
+        [ngClass]="{greenClass : transactions.ts_category == 'E', redClass : transactions.ts_category != 'E'}">
+        ฿ {{transactions.ts_cost}}
+      </ion-label>
     </ion-item>
   </ion-card>
-<ion-infinite-scroll threshold="30%" (ionInfinite)="loadMore($event)">
-<ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more Data  ..."></ion-infinite-scroll-content>
+  <ion-infinite-scroll threshold="30%" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more Data  ..."></ion-infinite-scroll-content>
 </ion-infinite-scroll>
 </ion-content>  -->
 
-  <!-- close ion-content -->
+    <!-- close ion-content -->
 
-  <!-- <div *ngIf="this.history_type == 'day'">
-    <ion-item-sliding *ngFor="let transactions of transactions2">
-      <ion-item>
+    <div *ngIf="this.history_type == 'day'">
+      <ion-item-sliding *ngFor="let transactions of transaction_by_account">
+        <ion-item>
 
-        <ion-label style="text-align: center;font-size: 65%;font-family: Kanit;">
-          {{transactions.ts_name}}
-        </ion-label>
-        <ion-label style="text-align: right;font-size: 65%;font-family: Kanit;"
-          [ngClass]="{greenClass : transactions.ts_category == 'E', redClass : transactions.ts_category != 'E'}">
-          ฿ {{transactions.ts_cost}}
-        </ion-label>
-      </ion-item>
-    </ion-item-sliding>
-  </div>
-  <div *ngIf="this.history_type == 'month'">
-    <ion-item-sliding *ngFor="let transactions of transactions">
-      <ion-item>
-        <ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
-          {{transactions.ts_date}}
-        </ion-label>
-        <ion-label style="text-align: center;font-size: 60%;font-family: Kanit;">
-          {{transactions.ts_name}}
-        </ion-label>
-        <ion-label style="text-align: right;font-size: 60%;font-family: Kanit;"
-          [ngClass]="{greenClass : transactions.ts_category == 'E', redClass : transactions.ts_category != 'E'}">
-          ฿ {{transactions.ts_cost}}
-        </ion-label>
-      </ion-item>
-    </ion-item-sliding>
-  </div>
-  <div *ngIf="this.history_type == 'other'">
-    <ion-item-sliding *ngFor="let transactions of transactions3">
-      <ion-item>
-        <ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
-          {{transactions.ts_date}}
-        </ion-label>
-        <ion-label style="text-align: center;font-size: 60%;font-family: Kanit;">
-          {{transactions.ts_name}}
-        </ion-label>
-        <ion-label style="text-align: right;font-size: 60%;font-family: Kanit;"
-          [ngClass]="{greenClass : transactions.ts_category == 'E', redClass : transactions.ts_category != 'E'}">
-          ฿ {{transactions.ts_cost}}
-        </ion-label>
-      </ion-item>
-    </ion-item-sliding>
-  </div> -->
+          <ion-label style="text-align: center;font-size: 65%;font-family: Kanit;">
+            {{transactions.ts_name}}
+          </ion-label>
+          <ion-label style="text-align: right;font-size: 65%;font-family: Kanit;"
+            [ngClass]="{greenClass : transactions.ts_category == 'E', redClass : transactions.ts_category != 'E'}">
+            ฿ {{transactions.ts_cost}}
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </div>
+    <div *ngIf="this.history_type == 'month'">
+      <ion-item-sliding *ngFor="let transactions of transaction_by_account">
+        <ion-item>
+          <ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
+            {{transactions.ts_date}}
+          </ion-label>
+          <ion-label style="text-align: center;font-size: 60%;font-family: Kanit;">
+            {{transactions.ts_name}}
+          </ion-label>
+          <ion-label style="text-align: right;font-size: 60%;font-family: Kanit;"
+            [ngClass]="{greenClass : transactions.ts_category == 'E', redClass : transactions.ts_category != 'E'}">
+            ฿ {{transactions.ts_cost}}
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </div>
+    <div *ngIf="this.history_type == 'other'">
+      <ion-item-sliding *ngFor="let transactions of transaction_by_account">
+        <ion-item>
+          <ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
+            {{transactions.ts_date}}
+          </ion-label>
+          <ion-label style="text-align: center;font-size: 60%;font-family: Kanit;">
+            {{transactions.ts_name}}
+          </ion-label>
+          <ion-label style="text-align: right;font-size: 60%;font-family: Kanit;"
+            [ngClass]="{greenClass : transactions.ts_category == 'E', redClass : transactions.ts_category != 'E'}">
+            ฿ {{transactions.ts_cost}}
+          </ion-label>
+        </ion-item>
+      </ion-item-sliding>
+    </div>
+  </ion-content>
