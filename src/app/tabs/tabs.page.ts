@@ -1,8 +1,11 @@
+import { AccountPage } from './../account/account.page';
+import { Account } from './../Pattern';
 import { MainMenuPage } from '../main-menu/main-menu.page';
 import { TransactionInsertPage } from './../transaction-insert/transaction-insert.page';
 import { Component, OnInit, } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
@@ -14,11 +17,12 @@ export class TabsPage implements OnInit {
 
   constructor(
     private MainMenuPage: MainMenuPage,
-    // private bankAccountRawInput: bankAccountRawInput,
     private modalController: ModalController,
     private alertController: AlertController,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private account: Account,
+    private AccountPage : AccountPage,
   ) {
     console.log("hello")
     this.route.queryParams.subscribe(params => {
@@ -27,13 +31,19 @@ export class TabsPage implements OnInit {
       }
       console.log(this.data)
     });
+
+    this.account.set_value(5, "Niphitphon", "Thanatkulkit", 60160170, 60160170);
+
   }
+
+  
 
   ngOnInit() {
   }
 
   ionViewWillEnter() {
     console.log("Enter tab all")
+    this.MainMenuPage.set_account(this.account);
   }
 
 
@@ -70,6 +80,8 @@ export class TabsPage implements OnInit {
   public form_time() {
 
   }
+
+  
 
   public transaction_insert(status) {
     let ts_name = status.data.ts_name

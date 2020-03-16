@@ -1,4 +1,5 @@
-import { Account } from './Pattern';
+import { AccountPage } from './account/account.page';
+import { Account, Transaction, Transaction_entertain, Transaction_default, Transaction_food } from './Pattern';
 import { MainMenuPage } from './main-menu/main-menu.page';
 import { TransactionInsertPage } from './transaction-insert/transaction-insert.page';
 import { NgModule } from '@angular/core';
@@ -42,7 +43,11 @@ import { HomePage } from './homepage/homepage.page';
     },
     MainMenuPage,
     HomePage,
-    Account
+    Account,
+    AccountPage,
+    Transaction_entertain,
+    Transaction_default,
+    Transaction_food,
 
   ],
   bootstrap: [AppComponent]

@@ -30,8 +30,8 @@ export class TransactionService {
     return this.http.post(this.url + "/dev", data).map((res) => res.json());
   }
 
-  get_transaction_by_account_id() {
-    return this.http.get(`http://localhost:3000/get_transaction_by_key/2`).map((res) => res.json());
+  get_transaction_by_account_id(ac_id) {
+    return this.http.get(`http://localhost:3000/get_transaction_by_key/${ac_id}`).map((res) => res.json());
 
   }
   get_transaction_this_day() {

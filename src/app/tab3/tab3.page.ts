@@ -63,7 +63,7 @@ export class Tab3Page implements OnInit {
 
   get_transaction_by_account() {
     this.transaction_by_account = [];
-    this.TransactionService.get_transaction_by_account_id().subscribe((res) => {
+    this.TransactionService.get_transaction_by_account_id(5).subscribe((res) => {
       res.forEach(element => {
         let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
         this.transaction_by_account.push({
