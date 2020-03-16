@@ -17,17 +17,17 @@
     <ion-card-content>
 
       <ion-toolbar>
-        <ion-segment value="all">
-          <ion-segment-button value="all">รายรับ-รายจ่าย</ion-segment-button>
-          <ion-segment-button value="favorites">ประเภทรายการ</ion-segment-button>
+        <ion-segment class="ios in-toolbar hydrated" (ionChange)="segmentChanged($event)">
+          <ion-segment-button value="re">รายรับ-รายจ่าย</ion-segment-button>
+          <ion-segment-button value="cate">ประเภทรายการ</ion-segment-button>
         </ion-segment>
       </ion-toolbar>
       <br>
-      <canvas baseChart
-      [data]="reChartData"
-      [labels]="reChartLabels"
-      [chartType]="reChartType"
-      [options]="reOption"></canvas>
+          <canvas baseChart
+          [data]="cateChartData"
+          [labels]="cateChartLabels"
+          [chartType]="cateChartType"
+          [options]="cateOption"></canvas>
       <br>
       <select align="right" name="" id="">
         <option value="">Jan</option>
