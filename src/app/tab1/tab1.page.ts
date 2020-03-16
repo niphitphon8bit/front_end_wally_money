@@ -7,7 +7,25 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
+  public history_type: string;
+
   constructor() {}
+
+  public segmentChanged(ev: any) {
+    if (this.history_type == "re") {
+      console.log('Segment changed', ev);
+      this.history_type = "re";
+
+    } else {
+      console.log('Segment changed', ev);
+
+      this.history_type = "cate"
+    }
+    console.log(this.history_type);
+  }
+  ngOnInit() {
+    this.history_type = "re";
+  }
 
   reChartData = [300,55];
   reChartType = 'doughnut';
