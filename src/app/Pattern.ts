@@ -59,7 +59,7 @@ export abstract class Transaction {
     private ts_detail: string;
     private ts_category: string;
     private ts_ac_id: any;
-    private ts_type_id: Transaction_type_factory;
+    private ts_type_id: any;
 
     public create_transaction(name, cost, date, detail, ac_id, type_id,category) {
         this.set_ts_name(name);
@@ -94,49 +94,68 @@ export abstract class Transaction {
         this.ts_ac_id = ac_id;
     }
 
-    protected abstract set_transaction_type(): Transaction_type_factory;    
+    protected set_type_id(type_id){
+        this.ts_type_id = type_id;
+    }
+
+    protected abstract set_transaction_type();    
 
 }
 
-class Transaction_default extends Transaction {
+export class Transaction_default extends Transaction {
 
 
-    protected set_transaction_type(): Transaction_type_factory {
-        return new Transaction_type_default;
+    public set_transaction_type() {
+        return this.set_type_id(2);
     }
 
 }
 
-class Transaction_entertain extends Transaction {
+export class Transaction_entertain extends Transaction {
 
 
-    protected set_transaction_type(): Transaction_type_factory {
-        return new Transaction_type_entertain;
+    public set_transaction_type(){
+        return this.set_type_id(1);
     }
 
 }
 
-export interface Transaction_type_factory {
-    create_a_transaction_type(): string;
+export class Transaction_food extends Transaction {
+
+
+    public set_transaction_type(){
+        return this.set_type_id(3);
+    }
+
 }
 
-class Transaction_type_entertain implements Transaction_type_factory {
-    public ts_type_id: any;
-    public create_a_transaction_type(): any {
-        return this.ts_type_id = 1;
-    }
-}
+// export interface Transaction_type_factory {
+//     create_a_transaction_type(): string;
+// }
 
-class Transaction_type_food implements Transaction_type_factory {
-    public ts_type_id: any;
-    public create_a_transaction_type(): any {
-        return this.ts_type_id = 2;
-    }
-}
+// class Transaction_type_entertain implements Transaction_type_factory {
+//     public ts_type_id: any;
+//     public create_a_transaction_type(): any {
+//         return this.ts_type_id = 1;
+//     }
+// }
 
-class Transaction_type_default implements Transaction_type_factory {
-    public ts_type_id: any;
-    public create_a_transaction_type(): any {
-        return this.ts_type_id = 3;
-    }
-}
+// class Transaction_type_food implements Transaction_type_factory {
+//     public ts_type_id: any;
+//     public create_a_transaction_type(): any {
+//         return this.ts_type_id = 2;
+//     }
+// }
+
+// class Transaction_type_default implements Transaction_type_factory {
+//     public ts_type_id: any;
+//     public create_a_transaction_type(): any {
+//         return this.ts_type_id = 3;
+//     }
+// }
+
+// function clientCode(transaction: Transaction) {
+//     // ...
+//     transaction.create_transaction("name","cost","date","detail","ac_id","type_id","category");
+//     // ...
+// }
