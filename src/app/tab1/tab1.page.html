@@ -11,7 +11,7 @@
   <ion-card>
 
     <ion-card-header>
-      <ion-card-subtitle align="center">อัตราการใช้เงินในแต่ละเดือน</ion-card-subtitle>
+      <ion-card-subtitle align="center">สรุปยอดค่าใช้จ่าย</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
@@ -24,17 +24,26 @@
       </ion-toolbar>
       <br>
       <canvas baseChart
-      [data]="doughnutChartData"
-      [labels]="doughnutChartLabels"
-      [chartType]="doughnutChartType"
-      [options]="donutOptions"></canvas>
+      [data]="reChartData"
+      [labels]="reChartLabels"
+      [chartType]="reChartType"
+      [options]="reOption"></canvas>
       <br>
       <select align="right" name="" id="">
-        <option value="">1</option>
-        <option value="">2</option>
+        <option value="">Jan</option>
+        <option value="">Feb</option>
+        <option value="">Mar</option>
+        <option value="">Apr</option>
+        <option value="">May</option>
+        <option value="">Jun</option>
+        <option value="">Jul</option>
+        <option value="">Aug</option>
+        <option value="">Sep</option>
+        <option value="">Oct</option>
+        <option value="">Nov</option>
+        <option value="">Dec</option>
       </select>
     </ion-card-content>
-
   </ion-card>
 
 </ion-content>
