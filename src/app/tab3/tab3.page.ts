@@ -25,9 +25,9 @@ export class Tab3Page implements OnInit {
 
   constructor(
     private TransactionService:TransactionService,
-    private MainMenuPage : MainMenuPage
-  ){
-
+    private MainMenuPage : MainMenuPage,
+    public navCtrl: NavController, private httpClient: HttpClient){
+    this.loadUsers();
   }
   public history_type: string;
   public transaction_by_account : any = [];
@@ -35,30 +35,26 @@ export class Tab3Page implements OnInit {
   page = 0;
   maximumPages = 3;
 
-  
-  // constructor(public navCtrl: NavController, private httpClient: HttpClient) {
-  //   this.loadUsers();
-  // }
-  // loadUsers(event?){
-  //   this.httpClient.get(`https://randomuser.me/api/?results=20&page=${this.page}`)
-  // .subscribe(res=>{
-  //   console.log(res);
-  //   this.users = this.users.concat(res['result']);
 
-  //   if (event) {
-  //     event.complete();
-  //   }
-  //  });
-  // }
-  // loadMore(event){
-  //   console.log(event);
-  //   this.page++;
-  //   this.loadUsers(event);
-  //   if(this.page === this.maximumPages){
-  //     event.enable(false);
-  //   }
+  loadUsers(event?){
+    this.httpClient.get(`https://randomuser.me/api/?results=20&page=${this.page}`)
+  .subscribe(res=>{
+    console.log(res);
+    this.users = this.users.concat(res['result']);
 
-  // }
+    if (event) {
+      event.complete();
+    }
+   });
+  }
+  loadMore(event){
+    console.log(event);
+    this.page++;
+    this.loadUsers(event);
+    if(this.page === this.maximumPages){
+      event.enable(false);
+    }
+  }
 
   ionViewWillEnter(){
     console.log("enter");
