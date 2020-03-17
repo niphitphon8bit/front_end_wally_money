@@ -10,32 +10,38 @@
   <ion-card-header>
     <ion-title style="text-align:center; color:black;">
       <ion-icon _ngcontent-pqu-c3="" name="time-outline" ng-reflect-name="time-outline" role="img" class="md hydrated"
-        aria-label="time outline"></ion-icon> ชื่อผู้ใช้งาน
-
+        aria-label="time outline"></ion-icon> บัญชีผู้ใช้
     </ion-title>
     <ion-card-content>
       <br>
-   <ion-item>
-     <br>
-     <ion-input  [(ngModel)]="fname" name="fname"  readonly>{{fname}}</ion-input>
-   </ion-item>
-   <ion-item>
-     <br>
-     <ion-input  [(ngModel)]="lname" name="lname" type="lname" readonly>{{lname}}</ion-input>
-   </ion-item>
-     </ion-card-content>
-     <br>
+      <ion-item>
+        <br>
+        <ion-input [(ngModel)]="ac_fname" name="ac_fname" readonly value="{{ac_fname}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <br>
+        <ion-input [(ngModel)]="ac_lname" name="ac_lname" readonly value="{{ac_lname}}"></ion-input>
+      </ion-item>
+    </ion-card-content>
+    <br>
 
-     <ion-card-content>
-        
-         <div><ion-button style="--background:#000000" (click)="ClickEdit()" size="default" expand="block"  id="reg" fill="clear">แก้ไข</ion-button></div>
-         
-     </ion-card-content>
+    <ion-card-content>
+
+      <div>
+        <ion-button style="--background:#000000" (click)="edit_account()" size="default" expand="block" id="reg"
+          fill="clear">แก้ไข</ion-button>
+      </div>
+      <div>
+        <ion-button style="--background:#000000" (click)="sign_out()" size="default" expand="block" id="reg"
+          fill="clear">ลงชื่อออก</ion-button>
+      </div>
+
+    </ion-card-content>
 
 
   </ion-card-header>
-  
-  
+
+
 </ion-card>
 
 

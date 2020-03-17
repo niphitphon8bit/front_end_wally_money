@@ -50,6 +50,7 @@ export class TabsPage implements OnInit {
     console.log("Enter tab all")
     this.MainMenuPage.set_account(this.account);
     this.Tab3Page.set_account(this.account);
+    this.AccountPage.set_account(this.account);
   }
 
 
