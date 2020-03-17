@@ -78,7 +78,7 @@ export class TabsPage implements OnInit {
           ).subscribe((res) => {
           });
         this.MainMenuPage.ionViewWillEnter();
-        this.MainMenuPage.get_all_transaction();
+        // this.MainMenuPage.get_all_transaction();
       }
     });
     return await modal.present()
@@ -101,21 +101,5 @@ export class TabsPage implements OnInit {
   public form_time() {
 
   }
-
-
-
-  // public transaction_insert(status) {
-  //   let data = {
-  //     ts_name: status.data.ts_name,
-  //     ts_cost: status.data.ts_cost,
-  //     ts_date: status.data.date + " " + status.date.time,
-  //     ts_detail: `${status.data.ts_detail}`,
-  //     ts_category: status.data.ts_category,
-  //     ts_ac_id: this.account.get_ac_id(),
-  //     ts_type_id: status.data.ts_transaction_type,
-  //   }
-  //   console.log(data);
-  //   return data;
-  // }
 
 }

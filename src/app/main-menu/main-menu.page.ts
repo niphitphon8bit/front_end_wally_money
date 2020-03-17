@@ -34,7 +34,7 @@ export class MainMenuPage implements OnInit {
   ionViewWillEnter() {
     console.log("enter");
     console.log(this.account)
-    this.get_all_transaction();
+    this.get_current_balance();
     this.get_ten_transaction();
     this.ac_balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
     this.full_name = `${this.account.get_ac_fname()} ${this.account.get_ac_lname()}`
@@ -46,14 +46,8 @@ export class MainMenuPage implements OnInit {
 
   get_ten_transaction() {
     this.transactions = [];
-    this.ac_balance = 0;
     this.TransactionService.get_ten_transaction_by_account_id(this.account.get_ac_id()).subscribe((res) => {
       res.forEach(element => {
-        if (element.ts_category == "R") {
-          this.ac_balance += element.ts_cost
-        } else {
-          this.ac_balance -= element.ts_cost
-        }
         let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
         console.log(fulldate);
         let date = this.format_date(fulldate);
@@ -72,41 +66,16 @@ export class MainMenuPage implements OnInit {
     console.log(this.transactions);
   }
 
-  get_all_transaction() {
-    this.transactions = [];
+  get_current_balance() {
     this.ac_balance = 0;
-    this.TransactionService.get_all_transaction_by_account_id(this.account.get_ac_id()).subscribe((res) => {
-      res.forEach(element => {
-        if (element.ts_category == "R") {
-          this.ac_balance += element.ts_cost
-        } else {
-          this.ac_balance -= element.ts_cost
-        }
-        let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
-        console.log(fulldate);
-        let date = this.format_date(fulldate);
-        let time = this.format_time(fulldate);
-        // if (element.ts_type_id == "1") {
-        //   this.transaction = new Transaction_food
-        //   this.transaction.create_transaction(element.ts_name, element.ts_cost, element.ts_date, element.ts_detail, element.ts_ac_id, element.ts_type_id, element.ts_category);
-        //   // Transaction_food(this.transaction.set_transaction_type();
-        // } else if (element.ts_type_id == "2") {
-
-        // } else {
-
-        // }
-        this.transactions.push({
-          ts_id: element.ts_id,
-          ts_name: element.ts_name,
-          ts_cost: element.ts_cost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-          ts_detail: element.ts_detail,
-          ts_category: element.ts_category,
-          ts_time: time,
-          ts_date: date
-        })
-      })
+    this.TransactionService.get_sum_revenue_by_ac_id(this.account.get_ac_id()).subscribe((res) => {
+      console.log(res[0].balance);
+      this.ac_balance = res[0].balance;
     })
-    console.log(this.transactions);
+    this.TransactionService.get_sum_expend_by_ac_id(this.account.get_ac_id()).subscribe((res) => {
+      console.log(res[0].balance);
+      this.ac_balance -= res[0].balance;
+    })
   }
 
   public format_date(date) {

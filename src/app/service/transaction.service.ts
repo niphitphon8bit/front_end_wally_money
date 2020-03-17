@@ -34,7 +34,7 @@ export class TransactionService {
   }
 
   get_ten_transaction_by_account_id(ac_id) {
-    return this.http.get(`http://localhost:3000/get_five_transaction_by_ac_id/${ac_id}`).map((res) => res.json());
+    return this.http.get(`http://localhost:3000/get_ten_transaction_by_ac_id/${ac_id}`).map((res) => res.json());
   }
 
   get_all_transaction_by_account_id(ac_id) {
@@ -65,7 +65,16 @@ export class TransactionService {
       // "ts_month": new Date().getMonth() + 1
     }
     console.log(data)
-    return this.http.post(`http://localhost:3000/transaction_get_history_between_date_by_account_key`, data).map((res) => res.json());
+    return this.http.post(`http://localhost:3000/transaction_get_history_between_date_by_account_key`,data).map((res) => res.json());
+  }
+
+  get_sum_revenue_by_ac_id(ts_ac_id){
+    return this.http.get(`http://localhost:3000/get_sum_revenue_by_ac_id/${ts_ac_id}`).map((res) => res.json());
+  }
+
+  get_sum_expend_by_ac_id(ts_ac_id){
+    return this.http.get(`http://localhost:3000/get_sum_expend_by_ac_id/${ts_ac_id}`).map((res) => res.json());
+
   }
  
 
