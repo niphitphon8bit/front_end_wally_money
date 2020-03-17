@@ -7,43 +7,61 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content>
 
-  <ion-card >
+  <ion-card>
     <ion-card-header>
-      <ion-card-title id ="title_name"  style="text-align: center;" >สมัครใช้งาน</ion-card-title>
+      <ion-card-title id="title_name" style="text-align: center;">สมัครใช้งาน</ion-card-title>
     </ion-card-header>
-  <ion-card-content>
-    <h1 id ="textsize">กรุณาระบุข้อมูล</h1>
-<ion-item>
-  <ion-input placeholder="ชื่อผู้ใช้งาน" name="name" id="textname"> </ion-input>
-</ion-item>
-<br>
 
-<ion-item>
-  <ion-input placeholder="รหัสผ่าน" name="lastname" id="textname"> </ion-input>
-</ion-item>
-<br>
 
-<ion-item>
+    <ion-card-content>
+      <h1 id="textsize">กรุณาระบุข้อมูล</h1>
 
-  <ion-input placeholder="รหัสผ่าน อีกครั้ง" name="lastname" id="textname"> </ion-input>
-</ion-item>
+  
+          <br>
+          <ion-item>
+            <ion-input placeholder="ชื่อผู้ใช้งาน"   [(ngModel)]="username" name="username" > </ion-input>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-input placeholder="รหัสผ่าน" [(ngModel)]="password" name="password" > </ion-input>
+          </ion-item>
+          <br>
+        
 
-  </ion-card-content>
+          <ion-item>
+            <ion-input placeholder="รหัสผ่าน อีกครั้ง" [(ngModel)]="password2" name="password2"  > </ion-input>
+          </ion-item>
+          <br>
+        
 
-  <ion-row>
-    <ion-col> 
-  <ion-button style="--background:#ffc409"  routerLink="/login" size="default" expand="block" fill="clear"id="reg">ย้อนกลับ</ion-button>  
-</ion-col>
-<ion-col>
-  <ion-button style="--background:#ffc409"  routerLink="/customer-name"  size="default" expand="block" fill="clear" id="reg">ยืนยัน</ion-button>
-</ion-col>
-</ion-row>
+          <ion-item>
+            <ion-input placeholder="ชื่อผู้ใช้งาน" [(ngModel)]="fname" name="fname"  > </ion-input>
+          </ion-item>
+          <br>
+        
 
-  <br>
+          <ion-item>
+            <ion-input placeholder="นามสกุล" [(ngModel)]="lname" name="lname"  > </ion-input>
+          </ion-item>
 
-</ion-card>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <ion-button style="--background:#ffc409" routerLink="/homepage" size="default" expand="block" fill="clear"
+          id="reg">ย้อนกลับ</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button style="--background:#ffc409"  size="default" expand="block" fill="clear" (click)="clickmain()"
+          id="reg"  >ยืนยัน</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <br>
+
+  </ion-card>
 
 
 

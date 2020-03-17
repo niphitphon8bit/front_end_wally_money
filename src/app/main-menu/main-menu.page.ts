@@ -1,6 +1,6 @@
+import { Account, Transaction_food } from './../Pattern';
 import { Component, OnInit } from '@angular/core';
 import { TransactionService } from '../service/transaction.service';
-// import { NumberValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-main-menu',
@@ -17,81 +17,71 @@ export class MainMenuPage implements OnInit {
 
   constructor(
     private TransactionService: TransactionService,
+    private account: Account,
   ) {
 
   }
   public ac_fname: string;
   public ac_lname: string;
   public full_name: string;
-  public ac_balance: any = 1000;
+  public ac_balance: any = 0;
   public max_cost: any;
-  public transaction: any = [];
-  public records: any = [
-    {
-      ts_id: 1,
-      ts_name: "ค่าขนมจ้าาาาาาาาาาาาาาาาาาาาาาาาาาาาาา",
-      ts_cost: 2125,
-      ts_time: "23:08:46",
-      ts_category: 'R',
-    },
-    {
-      ts_id: 2,
-      ts_name: "ค่าเสื้อ",
-      ts_cost: 3230,
-      ts_time: "23:08:46",
-      ts_category: 'E',
-    },
-    {
-      ts_id: 3,
-      ts_name: "แม่ให้",
-      ts_cost: 350,
-      ts_time: "23:08:46",
-      ts_category: 'R',
-    },
-    {
-      ts_id: 4,
-      ts_name: "แม่ขอ",
-      ts_cost: 4000,
-      ts_time: "21:08:46",
-      ts_category: 'E',
-    },
-    {
-      ts_id: 5,
-      ts_name: "แม่ยืม",
-      ts_cost: 45000098,
-      ts_time: "20:08:46",
-      ts_category: 'E',
-    },
-  ];
+  public transactions: any = [];
+  // public records: any = [];
 
   ngOnInit() {
-    this.records.forEach(element => {
-      element.ts_cost = element.ts_cost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    });
-    this.ac_balance = this.ac_balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    this.ac_fname = "Niphitphon";
-    this.ac_lname = "Thanatkulkit";
-    this.full_name = `${this.ac_lname} ${this.ac_fname[0]}.`;
+    // this.full_name = `${this.account.get_ac_fname()} ${this.account.get_ac_lname()}`
+    // this.records.forEach(element => {
+    //   element.ts_cost = element.ts_cost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    // });
+    // this.ac_balance = this.ac_balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    // this.ac_fname = "Niphitphon";
+    // this.ac_lname = "Thanatkulkit";
+    // this.full_name = `${this.ac_lname} ${this.ac_fname[0]}.`;
     // this.get_transaction();
+
   }
 
   ionViewWillEnter() {
     console.log("enter");
+    console.log(this.account)
     this.get_transaction();
+    this.ac_balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+    this.full_name = `${this.account.get_ac_fname()} ${this.account.get_ac_lname()}`
+  }
+
+  set_account(account: Account) {
+    this.account.set_value(account.get_ac_id(), account.get_ac_fname(), account.get_ac_lname(), account.get_ac_username(), account.get_ac_password())
+    // this.full_name = `${this.account.get_ac_fname} ${this.account.get_ac_lname}`
   }
 
   get_transaction() {
-    this.transaction = [];
-    this.TransactionService.get_all_transaction().subscribe((res) => {
+    this.transactions = [];
+    this.ac_balance = 0;
+    this.TransactionService.get_all_transaction_by_account_id(this.account.get_ac_id()).subscribe((res) => {
       res.forEach(element => {
+        if (element.ts_category == "R") {
+          this.ac_balance += element.ts_cost
+        } else {
+          this.ac_balance -= element.ts_cost
+        }
         let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
         console.log(fulldate);
-        let date = `${new Date(element.ts_date).getDate()}/${new Date(element.ts_date).getMonth()}/${new Date(element.ts_date).getFullYear()}`;
-        let time = `${new Date(element.ts_date).getHours()}:${new Date(element.ts_date).getMinutes()}:${new Date(element.ts_date).getSeconds()}`;
-        this.transaction.push({
+        let date = this.format_date(fulldate);
+        let time = this.format_time(fulldate);
+        // if (element.ts_type_id == "1") {
+        //   this.transaction = new Transaction_food
+        //   this.transaction.create_transaction(element.ts_name, element.ts_cost, element.ts_date, element.ts_detail, element.ts_ac_id, element.ts_type_id, element.ts_category);
+        //   // Transaction_food(this.transaction.set_transaction_type();
+        // } else if (element.ts_type_id == "2") {
+
+        // } else {
+
+        // }
+        this.transactions.push({
           ts_id: element.ts_id,
           ts_name: element.ts_name,
-          ts_cost: element.ts_cost,
+          ts_cost: element.ts_cost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
           ts_detail: element.ts_detail,
           ts_category: element.ts_category,
           ts_time: time,
@@ -99,7 +89,7 @@ export class MainMenuPage implements OnInit {
         })
       })
     })
-    console.log(this.transaction);
+    console.log(this.transactions);
   }
 
   public format_date(date) {
@@ -132,49 +122,3 @@ export class MainMenuPage implements OnInit {
   }
 
 }
-
-
-// ngOnInit(){
-
-// }
-
-// class Account {
-//   fname: string;
-//   lname: string;
-//   max_cost: number;
-//   record: Record[];
-// }
-
-// class Record {
-//   balance: number;
-//   date: Date;
-
-// }
-
-interface Transaction {
-
-  //   private name: string;
-  //   private cost: number;
-  //   private date: Date;
-  //   private detail: string;
-  //   private type: string;
-
-  //   constructor(){
-
-  // };
-
-  //   set_name(n: string): void;
-
-}
-
-// class Transaction_Revenue implements Transaction {
-
-//   constructor(n : string){
-//     this.name = n;
-  // }
-
-//   set_name(n : string){
-
-//   }
-
-// }

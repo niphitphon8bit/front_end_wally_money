@@ -1,3 +1,6 @@
+import { Tab3Page } from './tab3/tab3.page';
+import { AccountPage } from './account/account.page';
+import { Account, Transaction, Transaction_entertain, Transaction_default, Transaction_food } from './Pattern';
 import { MainMenuPage } from './main-menu/main-menu.page';
 import { TransactionInsertPage } from './transaction-insert/transaction-insert.page';
 import { NgModule } from '@angular/core';
@@ -12,7 +15,6 @@ import { Http, HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomePage } from './homepage/homepage.page';
-
 
 @NgModule({
   declarations: [
@@ -41,7 +43,13 @@ import { HomePage } from './homepage/homepage.page';
       useClass: IonicRouteStrategy
     },
     MainMenuPage,
-	HomePage
+    HomePage,
+    Account,
+    AccountPage,
+    Transaction_entertain,
+    Transaction_default,
+    Transaction_food,
+    Tab3Page
 
   ],
   bootstrap: [AppComponent]

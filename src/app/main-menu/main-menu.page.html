@@ -10,7 +10,7 @@
 
   <ion-card id="show_balance" style=" background-color: rgb(35, 34, 34);">
     <ion-card-header>
-      <ion-card-subtitle align="center" style="color:antiquewhite">Mr. {{full_name}}</ion-card-subtitle>
+      <ion-card-subtitle align="center" style="color:antiquewhite">คุณ {{full_name}}</ion-card-subtitle>
       <ion-card-subtitle align="center" style="font-size: 16px;color:antiquewhite">ยอดเงินคงเหลือ</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content align="center">
@@ -25,17 +25,17 @@
       </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <ion-item-sliding *ngFor="let record of transaction">
+      <ion-item-sliding *ngFor="let transaction of transactions">
         <ion-item>
           <ion-label style="text-align: left;font-size: 60%;font-family: Kanit;">
-            {{record.ts_time}}
+            {{transaction.ts_time}}
           </ion-label>
           <ion-label style="text-align: center;font-size: 60%;font-family: Kanit;">
-            {{record.ts_name}}
+            {{transaction.ts_name}}
           </ion-label>
           <ion-label style="text-align: right;font-size: 60%;font-family: Kanit;"
-            [ngClass]="{greenClass : record.ts_category == 'E', redClass : record.ts_category != 'E'}">
-            ฿ {{record.ts_cost}}
+            [ngClass]="{greenClass : transaction.ts_category == 'R', redClass : transaction.ts_category != 'R'}">
+            ฿ {{transaction.ts_cost}}
           </ion-label>
         </ion-item>
         <ion-item-options side="end">
