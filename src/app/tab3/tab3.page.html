@@ -57,7 +57,7 @@
 
 <ion-content>
   <div *ngIf="this.history_type == 'day'">
-    <ion-virtual-scroll [items]="transaction_by_account" [headerFn]="myHeaderFn">
+    <ion-virtual-scroll [items]="transaction_by_day" [headerFn]="myHeaderFn">
       <ion-item-divider *virtualHeader="let header" color="warning">
         {{ header }}
       </ion-item-divider>
@@ -69,7 +69,7 @@
           {{item.ts_name}}
         </ion-label>
         <ion-label style="text-align: right;font-size: 65%;font-family: Kanit;"
-          [ngClass]="{greenClass : item.ts_category == 'E', redClass : item.ts_category != 'E'}">
+          [ngClass]="{greenClass : item.ts_category == 'R', redClass : item.ts_category != 'R'}">
           ฿ {{item.ts_cost}}
         </ion-label>
       </ion-item>
@@ -83,14 +83,14 @@
           {{transactions.ts_name}}
         </ion-label>
         <ion-label style="text-align: right;font-size: 65%;font-family: Kanit;"
-          [ngClass]="{greenClass : transactions.ts_category == 'E', redClass : transactions.ts_category != 'E'}">
+          [ngClass]="{greenClass : transactions.ts_category == 'R', redClass : transactions.ts_category != 'R'}">
           ฿ {{transactions.ts_cost}}
         </ion-label>
       </ion-item>
     </ion-item-sliding> -->
   </div>
   <div *ngIf="this.history_type == 'month'">
-    <ion-virtual-scroll [items]="transaction_by_account" [headerFn]="myHeaderFn">
+    <ion-virtual-scroll [items]="transaction_by_month" [headerFn]="myHeaderFn">
       <ion-item-divider *virtualHeader="let header" color="warning">
         {{ header }}
       </ion-item-divider>
@@ -102,7 +102,7 @@
           {{item.ts_name}}
         </ion-label>
         <ion-label style="text-align: right;font-size: 65%;font-family: Kanit;"
-          [ngClass]="{greenClass : item.ts_category == 'E', redClass : item.ts_category != 'E'}">
+          [ngClass]="{greenClass : item.ts_category == 'R', redClass : item.ts_category != 'R'}">
           ฿ {{item.ts_cost}}
         </ion-label>
       </ion-item>
@@ -116,7 +116,7 @@
           {{transactions.ts_name}}
         </ion-label>
         <ion-label style="text-align: right;font-size: 60%;font-family: Kanit;"
-          [ngClass]="{greenClass : transactions.ts_category == 'E', redClass : transactions.ts_category != 'E'}">
+          [ngClass]="{greenClass : transactions.ts_category == 'R', redClass : transactions.ts_category != 'R'}">
           ฿ {{transactions.ts_cost}}
         </ion-label>
       </ion-item>
@@ -135,7 +135,7 @@
           {{item.ts_name}}
         </ion-label>
         <ion-label style="text-align: right;font-size: 65%;font-family: Kanit;"
-          [ngClass]="{greenClass : item.ts_category == 'E', redClass : item.ts_category != 'E'}">
+          [ngClass]="{greenClass : item.ts_category == 'R', redClass : item.ts_category != 'R'}">
           ฿ {{item.ts_cost}}
         </ion-label>
       </ion-item>
@@ -149,7 +149,7 @@
           {{transactions.ts_name}}
         </ion-label>
         <ion-label style="text-align: right;font-size: 60%;font-family: Kanit;"
-          [ngClass]="{greenClass : transactions.ts_category == 'E', redClass : transactions.ts_category != 'E'}">
+          [ngClass]="{greenClass : transactions.ts_category == 'R', redClass : transactions.ts_category != 'R'}">
           ฿ {{transactions.ts_cost}}
         </ion-label>
       </ion-item>

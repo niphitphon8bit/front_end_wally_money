@@ -7,11 +7,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-card>
 
     <ion-card-header>
-      <ion-card-subtitle align="center">สรุปยอดค่าใช้จ่าย</ion-card-subtitle>
+      <ion-card-subtitle align="center" style="color: black">สรุปยอดค่าใช้จ่าย</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
@@ -23,35 +23,22 @@
         </ion-segment>
       </ion-toolbar> -->
       <br>
-      <ion-slides>
-        <ion-slide>
-          <canvas baseChart [data]="categoryChartData" [labels]="categoryChartLabels" [chartType]="categoryChartType"
-            [options]="categoryOption"></canvas>
-        </ion-slide>
-
-        <ion-slide>
-          <canvas baseChart [data]="cateChartData" [labels]="cateChartLabels" [chartType]="cateChartType"
-            [options]="cateOption"></canvas>
-        </ion-slide>
-      </ion-slides>
+      <canvas baseChart [data]="transactionChartData" [labels]="transactionChartLabels"
+        [chartType]="transactionChartType" [options]="transactionOption"></canvas>
       <br>
-      <ion-item>
-        <ion-label style="font-family: Kanit;">ช่วงเวลา</ion-label>
-        <ion-select align="right" name="" id="">
-          <ion-select-option style="font-family: Kanit;" value="">Jan</ion-select-option>
-          <ion-select-option style="font-family: Kanit;" value="">Feb</ion-select-option>
-          <ion-select-option style="font-family: Kanit;" value="">Mar</ion-select-option>
-          <ion-select-option style="font-family: Kanit;" value="">Apr</ion-select-option>
-          <ion-select-option style="font-family: Kanit;" value="">May</ion-select-option>
-          <ion-select-option style="font-family: Kanit;" value="">Jun</ion-select-option>
-          <ion-select-option style="font-family: Kanit;" value="">Jul</ion-select-option>
-          <ion-select-option style="font-family: Kanit;" value="">Aug</ion-select-option>
-          <ion-select-option style="font-family: Kanit;" value="">Sep</ion-select-option>
-          <ion-select-option style="font-family: Kanit;" value="">Oct</ion-select-option>
-          <ion-select-option style="font-family: Kanit;" value="">Nov</ion-select-option>
-          <ion-select-option style="font-family: Kanit;" value="">Dec</ion-select-option>
-        </ion-select>
-      </ion-item>
+      <canvas baseChart [data]="categoryChartData" [labels]="categoryChartLabels" [chartType]="categoryChartType"
+        [options]="categoryOption"></canvas>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="dark">
+    <ion-card-content>
+      <ion-label style="font-family: Kanit;">ช่วงเวลา</ion-label>
+      <ion-select interface="popover" [(ngModel)]="item" (ionChange)="build_chart()">
+        <ion-select-option *ngFor="let item of selector_month_year" [value]="item">
+          {{item.value}}
+        </ion-select-option>
+      </ion-select>
     </ion-card-content>
   </ion-card>
 
