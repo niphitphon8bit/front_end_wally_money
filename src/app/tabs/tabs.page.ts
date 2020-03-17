@@ -1,8 +1,10 @@
+import { TransactionService } from './../service/transaction.service';
+import { Tab3Page } from './../tab3/tab3.page';
 import { AccountPage } from './../account/account.page';
 import { Account } from './../Pattern';
 import { MainMenuPage } from '../main-menu/main-menu.page';
 import { TransactionInsertPage } from './../transaction-insert/transaction-insert.page';
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, ɵConsole, } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -22,21 +24,23 @@ export class TabsPage implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private account: Account,
-    private AccountPage : AccountPage,
+    private AccountPage: AccountPage,
+    private Tab3Page: Tab3Page,
+    private TransactionService: TransactionService
   ) {
     console.log("hello")
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.data = this.router.getCurrentNavigation().extras.state.user;
+        this.data = this.router.getCurrentNavigation().extras.state;
+        this.account.set_value(this.data.ac_id, this.data.ac_fname, this.data.ac_lname, this.data.ac_username, this.data.ac_password);
       }
       console.log(this.data)
     });
 
-    this.account.set_value(5, "Niphitphon", "Thanatkulkit", 60160170, 60160170);
 
   }
 
-  
+
 
   ngOnInit() {
   }
@@ -44,6 +48,7 @@ export class TabsPage implements OnInit {
   ionViewWillEnter() {
     console.log("Enter tab all")
     this.MainMenuPage.set_account(this.account);
+    this.Tab3Page.set_account(this.account);
   }
 
 
@@ -55,9 +60,24 @@ export class TabsPage implements OnInit {
 
     modal.onDidDismiss().then((status) => {
       this.MainMenuPage.ionViewWillEnter();
-      if (status != null) {
+      if (status.data.dismissed != true) {
+        let ts_date: string;
         status.data.date = this.format_date(status.data.date);
         console.log(status);
+        console.log(status.data.time)
+        ts_date = status.data.time;
+        status.data.time = ts_date;
+        this.TransactionService.transaction_insert(
+          status.data.ts_name,
+          status.data.ts_cost,
+          status.data.ts_date,
+          status.data.ts_detail,
+          status.data.ts_category,
+          this.account.get_ac_id(),
+          status.data.ts_transaction_type
+        ).subscribe((res) => {
+        });
+        this.MainMenuPage.get_transaction();
       }
     });
     return await modal.present()
@@ -81,16 +101,20 @@ export class TabsPage implements OnInit {
 
   }
 
-  
 
-  public transaction_insert(status) {
-    let ts_name = status.data.ts_name
-    let ts_cost = status.data.ts_cost
-    let ts_date = `${status.data.date} ${status.date.time}`
-    let ts_detail = `${status.data.ts_detail}`
-    let ts_category = status.data.ts_category
-    let ts_ac_id = 5
-    let ts_type_id = status.data.ts_transaction_type
-  }
+
+  // public transaction_insert(status) {
+  //   let data = {
+  //     ts_name: status.data.ts_name,
+  //     ts_cost: status.data.ts_cost,
+  //     ts_date: status.data.date + " " + status.date.time,
+  //     ts_detail: `${status.data.ts_detail}`,
+  //     ts_category: status.data.ts_category,
+  //     ts_ac_id: this.account.get_ac_id(),
+  //     ts_type_id: status.data.ts_transaction_type,
+  //   }
+  //   console.log(data);
+  //   return data;
+  // }
 
 }

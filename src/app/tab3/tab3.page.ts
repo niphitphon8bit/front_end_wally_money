@@ -1,3 +1,4 @@
+import { Account } from './../Pattern';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController } from '@ionic/angular';
 import { CurrencyPipe } from '@angular/common';
@@ -26,7 +27,9 @@ export class Tab3Page implements OnInit {
   constructor(
     private TransactionService: TransactionService,
     private MainMenuPage: MainMenuPage,
-    public navCtrl: NavController, private httpClient: HttpClient) {
+    private account: Account,
+    public navCtrl: NavController, private httpClient: HttpClient
+  ) {
     this.loadUsers();
   }
   public history_type: string;
@@ -56,6 +59,11 @@ export class Tab3Page implements OnInit {
     }
   }
 
+  set_account(account: Account) {
+    this.account.set_value(account.get_ac_id(), account.get_ac_fname(), account.get_ac_lname(), account.get_ac_username(), account.get_ac_password())
+    // this.full_name = `${this.account.get_ac_fname} ${this.account.get_ac_lname}`
+  }
+
   ionViewWillEnter() {
     console.log("enter");
     this.get_transaction_by_account();
@@ -63,7 +71,7 @@ export class Tab3Page implements OnInit {
 
   get_transaction_by_account() {
     this.transaction_by_account = [];
-    this.TransactionService.get_transaction_by_account_id(5).subscribe((res) => {
+    this.TransactionService.get_all_transaction_by_account_id(5).subscribe((res) => {
       res.forEach(element => {
         let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
         this.transaction_by_account.push({
@@ -84,7 +92,7 @@ export class Tab3Page implements OnInit {
   public segmentChanged(ev: any) {
     console.log(ev.detail.value)
     if (ev.detail.value == "day") {
-      console.log(this.TransactionService.get_transaction_this_day().subscribe((res) => {
+      console.log(this.TransactionService.get_transaction_this_day(this.account.get_ac_id()).subscribe((res) => {
         res.forEach(element => {
           let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
           this.transaction_by_account = [];
@@ -103,7 +111,7 @@ export class Tab3Page implements OnInit {
       console.log(this.transaction_by_account)
       this.history_type = "day"
     } else if (ev.detail.value == "month") {
-      console.log(this.TransactionService.get_transaction_this_month().subscribe((res) => {
+      console.log(this.TransactionService.get_transaction_this_month(this.account.get_ac_id()).subscribe((res) => {
         this.transaction_by_account = [];
         res.forEach(element => {
           let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });

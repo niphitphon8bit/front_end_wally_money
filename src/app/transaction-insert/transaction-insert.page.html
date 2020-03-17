@@ -28,7 +28,7 @@
     </ion-item>
     <ion-item>
       <ion-label style="font-family: Kanit;">ประเภท</ion-label>
-      <ion-select value="R" [(ngModel)]="ts_catagory" name="ts_catagory">
+      <ion-select [(ngModel)]="ts_category" name="ts_category" (click)="select(ts_category)">
         <ion-select-option value="R">รายรับ</ion-select-option>
         <ion-select-option value="E">รายจ่าย</ion-select-option>
       </ion-select>

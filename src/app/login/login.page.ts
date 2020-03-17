@@ -32,25 +32,28 @@ export class LoginPage implements OnInit {
 
   clickmain() {
 
-   
-      this.accountservice.check_login(this.username, this.password).subscribe((res) => {
-        console.log(res)
-      })
 
-      if(this.username != null){
-    let navigationExtras: NavigationExtras = {
-      state: {
-        username: this.username,
-        password: this.password,
-        idaccount: this.idaccount
+    this.accountservice.check_login(this.username, this.password).subscribe((res) => {
+      console.log("Hello World")
+      console.log(res[0].ac_id)
+      if (this.username != null) {
+        let navigationExtras: NavigationExtras = {
+          state: {
+            ac_id: res[0].ac_id,
+            ac_username: res[0].ac_username,
+            ac_password: res[0].ac_password,
+            ac_fname: res[0].ac_fname,
+            ac_lname: res[0].ac_lname
+          }
+        };
+        console.log(navigationExtras)
+        this.router.navigate(['main_tab'], navigationExtras);
+      } else {
+        alert("ไม่พบข้อมูลในระบบ");
+
       }
-    };
-    console.log(navigationExtras)
-    this.router.navigate(['main_tab'], navigationExtras);
-  }else{
-    alert("ไม่พบข้อมูลในระบบ");
+    })
 
-  }
 
 
   }

@@ -20,32 +20,39 @@ export class TransactionService {
   }
 
 
-  transaction_insert(name_th: string, name_en: string) {
+  transaction_insert(ts_name: any, ts_cost: any, ts_date: any, ts_detail: any, ts_category: any, ts_ac_id: any, ts_type_id: any) {
     let data = {
-      "dev_name_th": name_th,
-      "dev_name_en": name_en,
-      "dev_status": "Y",
-      "dev_user_update": "55"
+      "ts_name": ts_name,
+      "ts_cost": ts_cost,
+      "ts_date": `${ts_date}`,
+      "ts_detail": ts_detail,
+      "ts_category": ts_category,
+      "ts_ac_id": ts_ac_id,
+      "ts_type_id": ts_type_id
     }
-    return this.http.post(this.url + "/dev", data).map((res) => res.json());
+    return this.http.post(this.url + "/transaction_insert", data).map((res) => res.json());
   }
 
-  get_transaction_by_account_id(ac_id) {
-    return this.http.get(`http://localhost:3000/get_transaction_by_key/${ac_id}`).map((res) => res.json());
-
+  get_five_transaction_by_account_id(ac_id) {
+    return this.http.get(`http://localhost:3000/get_five_transaction_by_ac_id/${ac_id}`).map((res) => res.json());
   }
-  get_transaction_this_day() {
+
+  get_all_transaction_by_account_id(ac_id) {
+    return this.http.get(`http://localhost:3000/get_all_transaction_by_ac_id/${ac_id}`).map((res) => res.json());
+  }
+
+  get_transaction_this_day(ac_id) {
     let data = {
-      "ts_ac_id": 2,
+      "ts_ac_id": ac_id,
       "ts_day": new Date().getDate()
     }
     console.log(data)
     return this.http.post(`http://localhost:3000/get_transaction_this_day`, data).map((res) => res.json());
 
   }
-  get_transaction_this_month() {
+  get_transaction_this_month(ac_id) {
     let data = {
-      "ts_ac_id": 2,
+      "ts_ac_id": ac_id,
       "ts_month": new Date().getMonth() + 1
     }
     console.log(data)

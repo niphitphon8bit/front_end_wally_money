@@ -10,7 +10,7 @@
 
   <ion-card id="show_balance" style=" background-color: rgb(35, 34, 34);">
     <ion-card-header>
-      <ion-card-subtitle align="center" style="color:antiquewhite">Mr. {{full_name}}</ion-card-subtitle>
+      <ion-card-subtitle align="center" style="color:antiquewhite">คุณ {{full_name}}</ion-card-subtitle>
       <ion-card-subtitle align="center" style="font-size: 16px;color:antiquewhite">ยอดเงินคงเหลือ</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content align="center">
@@ -34,7 +34,7 @@
             {{transaction.ts_name}}
           </ion-label>
           <ion-label style="text-align: right;font-size: 60%;font-family: Kanit;"
-            [ngClass]="{greenClass : transaction.ts_category == 'E', redClass : transaction.ts_category != 'E'}">
+            [ngClass]="{greenClass : transaction.ts_category == 'R', redClass : transaction.ts_category != 'R'}">
             ฿ {{transaction.ts_cost}}
           </ion-label>
         </ion-item>
