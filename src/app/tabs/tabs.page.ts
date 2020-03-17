@@ -1,3 +1,4 @@
+import { Tab1Page } from './../tab1/tab1.page';
 import { TransactionService } from './../service/transaction.service';
 import { Tab3Page } from './../tab3/tab3.page';
 import { AccountPage } from './../account/account.page';
@@ -26,7 +27,8 @@ export class TabsPage implements OnInit {
     private account: Account,
     private AccountPage: AccountPage,
     private Tab3Page: Tab3Page,
-    private TransactionService: TransactionService
+    private TransactionService: TransactionService,
+    private Tab1Page : Tab1Page
   ) {
     console.log("hello")
     this.route.queryParams.subscribe(params => {
@@ -50,6 +52,7 @@ export class TabsPage implements OnInit {
     console.log("Enter tab all")
     this.MainMenuPage.set_account(this.account);
     this.Tab3Page.set_account(this.account);
+    this.Tab1Page.set_account(this.account);
   }
 
 

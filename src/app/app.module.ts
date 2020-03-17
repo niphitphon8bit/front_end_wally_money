@@ -1,3 +1,4 @@
+import { Tab1Page } from './tab1/tab1.page';
 import { Tab3Page } from './tab3/tab3.page';
 import { AccountPage } from './account/account.page';
 import { Account, Transaction, Transaction_entertain, Transaction_default, Transaction_food } from './Pattern';
@@ -49,7 +50,8 @@ import { HomePage } from './homepage/homepage.page';
     Transaction_entertain,
     Transaction_default,
     Transaction_food,
-    Tab3Page
+    Tab3Page,
+    Tab1Page
 
   ],
   bootstrap: [AppComponent]

@@ -74,7 +74,10 @@ export class TransactionService {
 
   get_sum_expend_by_ac_id(ts_ac_id){
     return this.http.get(`http://localhost:3000/get_sum_expend_by_ac_id/${ts_ac_id}`).map((res) => res.json());
+  }
 
+  get_year_month_history_by_ac_id(ts_ac_id){
+    return this.http.get(`http://localhost:3000/get_year_month_history_by_ac_id/${ts_ac_id}`).map((res) => res.json());
   }
  
 
