@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title align="center" style="color: white;">Wally Money</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card style="background-color:#ffc409; color: black;">
+    <ion-card-header>
+      <ion-title style="text-align:center; color:black;">
+        <ion-icon name="create-outline"> </ion-icon> แก้ไขบัญชี
+      </ion-title>
+    </ion-card-header>
+    <ion-card-content>
+      <br>
+      <div style="text-align: left; font-size: 20px;">ชื่อ</div>
+
+   <ion-item>
+     <br>
+     <ion-input placeholder="แก้ไขชื่อ" [(ngModel)]="ac_fname" name="ac_fname"  > </ion-input>
+   </ion-item>
+   <br>
+   <div style="text-align: left; font-size: 20px;">นามสกุล</div>
+   <ion-item>
+     <ion-input placeholder="แก้ไขนามสกุล" [(ngModel)]="ac_lname" name="ac_lname" > </ion-input>
+   </ion-item>
+     </ion-card-content>
+  </ion-card>
+  <div><ion-button color="dark" (click)="success()" size="default" expand="block"  id="confirm" name="confirm ">ยืนยัน</ion-button></div>
+
+
+
+
+</ion-content>

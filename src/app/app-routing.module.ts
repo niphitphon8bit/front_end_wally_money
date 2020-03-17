@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },  {
+    path: 'account-edit',
+    loadChildren: () => import('./account-edit/account-edit.module').then( m => m.AccountEditPageModule)
   }
+
 
 
 

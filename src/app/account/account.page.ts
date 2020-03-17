@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from '../service/account.service';
 import { Account } from './../Pattern';
+import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { AccountEditPage } from './../account-edit/account-edit.page';
 
 @Component({
   selector: 'app-account',
@@ -17,9 +20,12 @@ export class AccountPage implements OnInit {
   constructor(
     public account: Account,
     private accountservice: AccountService,
-  ) {
+    private router: Router,
+    public modalController: ModalController,
+    ){
 
-  }
+    }
+ 
 
   ngOnInit() {
   }
@@ -36,6 +42,16 @@ export class AccountPage implements OnInit {
 
   set_account(account: Account) {
     this.account.set_value(account.get_ac_id(), account.get_ac_fname(), account.get_ac_lname(), account.get_ac_username(), account.get_ac_password())
+  }
+  sign_out(){
+    this.router.navigate(['login']);
+  }
+ 
+  async edit_account() {
+    const modal = await this.modalController.create({
+      component: AccountEditPage
+    });
+    return await modal.present()
   }
 
 }
