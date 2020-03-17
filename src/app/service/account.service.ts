@@ -17,12 +17,15 @@ export class AccountService {
     return this.http.get('http://localhost:3000/account').map((res)=> res.json());
   }
 
-  account_insert(ac_username:string, ac_password:string, ac_fname:string, ac_lname:string){
+  get_all_account_by_id(){
+    return this.http.get(`http://localhost:3000/get_all_account_by_id/${ac_id}`).map((res)=> res.json());
+  }
+
+  account_insert(ac_username:string, ac_password:string){
     let data = {
       "ac_username": ac_username,
       "ac_password": ac_password,
-      "ac_fname": ac_fname,
-      "ac_lname": ac_lname
+      
     }
     return this.http.post(this.url + "/account_insert", data).map((res) => res.json());
   }

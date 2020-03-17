@@ -34,7 +34,8 @@ export class TabsPage implements OnInit {
         this.data = this.router.getCurrentNavigation().extras.state;
         this.account.set_value(this.data.ac_id, this.data.ac_fname, this.data.ac_lname, this.data.ac_username, this.data.ac_password);
       }
-      console.log(this.data)
+      console.log(this.data);
+      console.log("Hello World", this.account);
     });
 
 
@@ -59,8 +60,7 @@ export class TabsPage implements OnInit {
     })
 
     modal.onDidDismiss().then((status) => {
-      this.MainMenuPage.ionViewWillEnter();
-      if (status.data.dismissed != true) {
+      if (status != null) {
         let ts_date: string;
         status.data.date = this.format_date(status.data.date);
         console.log(status);
@@ -75,8 +75,9 @@ export class TabsPage implements OnInit {
           status.data.ts_category,
           this.account.get_ac_id(),
           status.data.ts_transaction_type
-        ).subscribe((res) => {
-        });
+          ).subscribe((res) => {
+          });
+        this.MainMenuPage.ionViewWillEnter();
         this.MainMenuPage.get_transaction();
       }
     });
