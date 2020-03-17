@@ -17,6 +17,8 @@ export class AccountPage implements OnInit {
   private ac_password: string
   private ac_fname: string
   private ac_lname: string
+  private ac_id:string
+  
   constructor(
     public account: Account,
     private accountservice: AccountService,
@@ -36,6 +38,7 @@ export class AccountPage implements OnInit {
     this.ac_lname = this.account.get_ac_lname();
     this.ac_username = this.account.get_ac_username();
     this.ac_password = this.account.get_ac_password();
+    this.ac_id = this.account.get_ac_id();
   }
 
 
@@ -48,10 +51,25 @@ export class AccountPage implements OnInit {
   }
  
   async edit_account() {
+
     const modal = await this.modalController.create({
-      component: AccountEditPage
+      component: AccountEditPage,
+      componentProps: {
+        'ac_fname': this.ac_fname,
+        'ac_lname': this.ac_lname,
+        'ac_username': this.ac_username,
+        'ac_password': this.ac_password,
+        'ac_id': this.ac_id,
+      }
+
+    });
+    
+
+     modal.onDidDismiss().then((status) => {
+      if(status != null){
+        
+      }
     });
     return await modal.present()
   }
-
 }
