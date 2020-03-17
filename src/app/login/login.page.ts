@@ -14,7 +14,6 @@ export class LoginPage implements OnInit {
 
   private username: string
   private password: string
-  private password2: string
   private idaccount: string
   private user: any
 

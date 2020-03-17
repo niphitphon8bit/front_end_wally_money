@@ -33,7 +33,7 @@ export class TransactionService {
     return this.http.post(this.url + "/transaction_insert", data).map((res) => res.json());
   }
 
-  get_five_transaction_by_account_id(ac_id) {
+  get_ten_transaction_by_account_id(ac_id) {
     return this.http.get(`http://localhost:3000/get_five_transaction_by_ac_id/${ac_id}`).map((res) => res.json());
   }
 

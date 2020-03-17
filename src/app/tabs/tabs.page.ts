@@ -78,7 +78,7 @@ export class TabsPage implements OnInit {
           ).subscribe((res) => {
           });
         this.MainMenuPage.ionViewWillEnter();
-        this.MainMenuPage.get_transaction();
+        this.MainMenuPage.get_all_transaction();
       }
     });
     return await modal.present()

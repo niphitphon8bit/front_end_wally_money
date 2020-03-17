@@ -27,35 +27,52 @@ export class MainMenuPage implements OnInit {
   public ac_balance: any = 0;
   public max_cost: any;
   public transactions: any = [];
-  // public records: any = [];
 
   ngOnInit() {
-    // this.full_name = `${this.account.get_ac_fname()} ${this.account.get_ac_lname()}`
-    // this.records.forEach(element => {
-    //   element.ts_cost = element.ts_cost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    // });
-    // this.ac_balance = this.ac_balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    // this.ac_fname = "Niphitphon";
-    // this.ac_lname = "Thanatkulkit";
-    // this.full_name = `${this.ac_lname} ${this.ac_fname[0]}.`;
-    // this.get_transaction();
-
   }
 
   ionViewWillEnter() {
     console.log("enter");
     console.log(this.account)
-    this.get_transaction();
+    this.get_all_transaction();
+    this.get_ten_transaction();
     this.ac_balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
     this.full_name = `${this.account.get_ac_fname()} ${this.account.get_ac_lname()}`
   }
 
   set_account(account: Account) {
     this.account.set_value(account.get_ac_id(), account.get_ac_fname(), account.get_ac_lname(), account.get_ac_username(), account.get_ac_password())
-    // this.full_name = `${this.account.get_ac_fname} ${this.account.get_ac_lname}`
   }
 
-  get_transaction() {
+  get_ten_transaction() {
+    this.transactions = [];
+    this.ac_balance = 0;
+    this.TransactionService.get_ten_transaction_by_account_id(this.account.get_ac_id()).subscribe((res) => {
+      res.forEach(element => {
+        if (element.ts_category == "R") {
+          this.ac_balance += element.ts_cost
+        } else {
+          this.ac_balance -= element.ts_cost
+        }
+        let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
+        console.log(fulldate);
+        let date = this.format_date(fulldate);
+        let time = this.format_time(fulldate);
+        this.transactions.push({
+          ts_id: element.ts_id,
+          ts_name: element.ts_name,
+          ts_cost: element.ts_cost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+          ts_detail: element.ts_detail,
+          ts_category: element.ts_category,
+          ts_time: time,
+          ts_date: date
+        })
+      })
+    })
+    console.log(this.transactions);
+  }
+
+  get_all_transaction() {
     this.transactions = [];
     this.ac_balance = 0;
     this.TransactionService.get_all_transaction_by_account_id(this.account.get_ac_id()).subscribe((res) => {
