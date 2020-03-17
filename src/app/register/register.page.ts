@@ -15,8 +15,7 @@ export class RegisterPage implements OnInit {
   public username: string;
   public password: string;
   public password2: string;
-  public fname:string;
-  public lname:string;
+
   public slideOneForm: FormGroup;
   //private validators:Validators;
 
@@ -57,8 +56,7 @@ export class RegisterPage implements OnInit {
         username: this.username,
         password: this.password,
         password2: this.password2,
-        fname:this.fname,
-        lname:this.lname
+
       }
     };
     console.log(navigationExtras)
@@ -78,15 +76,13 @@ export class RegisterPage implements OnInit {
 
       })
 
-
-
     }
 
   }
 
 
   account_insert(event?) {
-    this.accountservice.account_insert(this.username, this.password,this.fname, this.lname).subscribe((res) => {
+    this.accountservice.account_insert(this.username, this.password, "", "").subscribe((res) => {
       console.log(res)
     })
 
