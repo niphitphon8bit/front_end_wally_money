@@ -86,7 +86,7 @@ export class RegisterPage implements OnInit {
 
 
   account_insert(event?) {
-    this.accountservice.account_insert(this.username, this.password,this.fname, this.lname).subscribe((res) => {
+    this.accountservice.account_insert(this.username, this.password).subscribe((res) => {
       console.log(res)
     })
 
