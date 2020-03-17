@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-
+import {IonSlides} from '@ionic/angular';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -9,10 +9,11 @@ export class Tab1Page {
 
   public history_type: string;
 
+  page="0"
+
   constructor() {}
 
-  page = "0";
-  
+ 
   public segmentChanged(ev: any) {
     if (this.history_type == "re") {
       console.log('Segment changed', ev);
@@ -42,6 +43,12 @@ export class Tab1Page {
       fontSize: 12,
       fontStyle: 'bold',
       fontColor: '#FFF',
+    },
+    title: {
+      display: true,
+      position: 'top',
+      text: 'รายรับ - รายจ่าย',
+      fontSize: 12,
     }
   };
 
@@ -59,6 +66,12 @@ export class Tab1Page {
       fontSize: 12,
       fontStyle: 'bold',
       fontColor: '#FFF',
+    },
+    title: {
+      display: true,
+      position: 'top',
+      text: 'ประเภทรายรับ - รายจ่าย',
+      fontSize: 12,
     }
   };
 }

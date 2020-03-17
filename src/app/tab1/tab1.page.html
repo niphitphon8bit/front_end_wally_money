@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
+  <ion-card >
 
     <ion-card-header>
       <ion-card-subtitle align="center">สรุปยอดค่าใช้จ่าย</ion-card-subtitle>
@@ -16,21 +16,20 @@
 
     <ion-card-content>
 
-      <ion-toolbar>
+      <!-- <ion-toolbar>
         <ion-segment class="ios in-toolbar hydrated">
           <ion-segment-button value="re">รายรับ-รายจ่าย</ion-segment-button>
           <ion-segment-button value="cate">ประเภทรายการ</ion-segment-button>
         </ion-segment>
-      </ion-toolbar>
+      </ion-toolbar> -->
       <br>
-          
           <ion-slides>
             <ion-slide>
-                <canvas baseChart
-                [data]="reChartData"
-                [labels]="reChartLabels"
-                [chartType]="reChartType"
-                [options]="reOption"></canvas>
+                  <canvas baseChart
+                  [data]="reChartData"
+                  [labels]="reChartLabels"
+                  [chartType]="reChartType"
+                  [options]="reOption"></canvas>
             </ion-slide>
 
             <ion-slide>
