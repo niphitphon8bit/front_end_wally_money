@@ -37,7 +37,11 @@ export class MainMenuPage implements OnInit {
     this.get_all_transaction();
     this.get_ten_transaction();
     this.ac_balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-    this.full_name = `${this.account.get_ac_fname()} ${this.account.get_ac_lname()}`
+    if(this.account.get_ac_fname() == ""){
+      this.full_name = this.account.get_ac_username();
+    }else{
+      this.full_name = `${this.account.get_ac_fname()} ${this.account.get_ac_lname()}`
+    }
   }
 
   set_account(account: Account) {
