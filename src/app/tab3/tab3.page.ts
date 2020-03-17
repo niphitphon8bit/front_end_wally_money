@@ -31,10 +31,13 @@ export class Tab3Page implements OnInit {
   }
   public history_type: string;
   public transaction_by_account: any = [];
+  public transaction_by_history: any = [];
   users = [];
   page = 0;
   maximumPages = 3;
-
+  
+  start_date: any;
+  end_date: any;
 
   loadUsers(event?) {
     this.httpClient.get(`https://randomuser.me/api/?results=20&page=${this.page}`)
@@ -58,9 +61,47 @@ export class Tab3Page implements OnInit {
 
   ionViewWillEnter() {
     console.log("enter");
-    this.get_transaction_by_account();
+    this.TransactionService.get_transaction_this_day().subscribe((res) => {
+      res.forEach(element => {
+        let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
+        this.transaction_by_account = [];
+        this.transaction_by_account.push({
+          ts_id: element.ts_id,
+          ts_name: element.ts_name,
+          ts_cost: element.ts_cost,
+          ts_detail: element.ts_detail,
+          ts_category: element.ts_category,
+          ts_date: this.MainMenuPage.format_date(fulldate),
+          // ts_date: date,
+          ts_time: this.MainMenuPage.format_time(fulldate),
+        })
+      })
+    })
   }
 
+  public get_transaction_history(){
+  this.start_date = this.MainMenuPage.format_date(this.start_date);
+  this.end_date = this.MainMenuPage.format_date(this.end_date);
+  this.transaction_by_history = [];
+  this.TransactionService.get_transaction_this_between(this.start_date,this.end_date).subscribe((res) => {
+    console.log(res);
+    res.forEach(element => {
+      let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
+      this.transaction_by_history.push({
+        ts_id: element.ts_id,
+        ts_name: element.ts_name,
+        ts_cost: element.ts_cost,
+        ts_detail: element.ts_detail,
+        ts_category: element.ts_category,
+        ts_date: this.MainMenuPage.format_date(fulldate),
+        // ts_date: date,
+        ts_time: this.MainMenuPage.format_time(fulldate),
+      })
+    })
+  })
+      console.log(this.transaction_by_history);
+  // console.log(this.TransactionService.get_transaction_this_between(this.start_date,this.end_date))
+  }
   get_transaction_by_account() {
     this.transaction_by_account = [];
     this.TransactionService.get_transaction_by_account_id().subscribe((res) => {
@@ -122,6 +163,23 @@ export class Tab3Page implements OnInit {
       console.log(this.transaction_by_account)
       this.history_type = "month"
     } else {
+      console.log(this.TransactionService.get_transaction_this_between(this.start_date,this.end_date).subscribe((res) => {
+        this.transaction_by_history = [];
+        res.forEach(element => {
+          let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
+          this.transaction_by_history.push({
+            ts_id: element.ts_id,
+            ts_name: element.ts_name,
+            ts_cost: element.ts_cost,
+            ts_detail: element.ts_detail,
+            ts_category: element.ts_category,
+            ts_date: this.MainMenuPage.format_date(fulldate),
+            // ts_date: date,
+            ts_time: this.MainMenuPage.format_time(fulldate),
+          })
+        })
+      }))
+      console.log(this.transaction_by_history)
       this.history_type = "other"
     }
   }

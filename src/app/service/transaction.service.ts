@@ -34,23 +34,33 @@ export class TransactionService {
     return this.http.get(`http://localhost:3000/get_transaction_by_key/2`).map((res) => res.json());
 
   }
-  get_transaction_this_day() {
+  get_transaction_this_day(ts_ac_id) {
     let data = {
-      "ts_ac_id": 2,
+      "ts_ac_id": ts_ac_id,
       "ts_day": new Date().getDate()
     }
     console.log(data)
     return this.http.post(`http://localhost:3000/get_transaction_this_day`, data).map((res) => res.json());
 
   }
-  get_transaction_this_month() {
+  get_transaction_this_month(ts_ac_id) {
     let data = {
-      "ts_ac_id": 2,
+      "ts_ac_id": ts_ac_id,
       "ts_month": new Date().getMonth() + 1
     }
     console.log(data)
     return this.http.post(`http://localhost:3000/get_transaction_this_month`, data).map((res) => res.json());
-
   }
+  get_transaction_this_between(date_start:string, end_start:string,ts_ac_id) {
+    let data = {
+      "ts_ac_id": ts_ac_id,
+      "ts_date_start":date_start,
+      "ts_date_end":end_start,
+      // "ts_month": new Date().getMonth() + 1
+    }
+    console.log(data)
+    return this.http.post(`http://localhost:3000/transaction_get_history_between_date_by_account_key`, data).map((res) => res.json());
+  }
+ 
 
 }
