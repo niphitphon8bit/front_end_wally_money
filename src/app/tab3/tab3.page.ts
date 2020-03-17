@@ -32,8 +32,10 @@ export class Tab3Page implements OnInit {
     this.loadUsers();
   }
   public history_type: string;
-  public transaction_by_account: any = [];
+  public transaction_by_month: any = [];
   public transaction_by_history: any = [];
+  public transaction_by_day: any = [];
+  public transaction_by_account: any = [];
   users = [];
   page = 0;
   maximumPages = 3;
@@ -72,8 +74,8 @@ export class Tab3Page implements OnInit {
     this.TransactionService.get_transaction_this_day(this.account.get_ac_id()).subscribe((res) => {
       res.forEach(element => {
         let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
-        this.transaction_by_account = [];
-        this.transaction_by_account.push({
+        this.transaction_by_day = [];
+        this.transaction_by_day.push({
           ts_id: element.ts_id,
           ts_name: element.ts_name,
           ts_cost: element.ts_cost,
@@ -88,10 +90,10 @@ export class Tab3Page implements OnInit {
   }
 
   public get_transaction_history() {
-    console.log(this.start_date,this.end_date)
+    console.log(this.start_date, this.end_date)
     this.start_date = this.MainMenuPage.format_date(this.start_date);
     this.end_date = this.MainMenuPage.format_date(this.end_date);
-    console.log(this.start_date,this.end_date)
+    console.log(this.start_date, this.end_date)
     this.transaction_by_history = [];
     this.TransactionService.get_transaction_this_between(this.start_date, this.end_date, this.account.get_ac_id()).subscribe((res) => {
       console.log(res);
@@ -135,11 +137,11 @@ export class Tab3Page implements OnInit {
   public segmentChanged(ev: any) {
     console.log(ev.detail.value)
     if (ev.detail.value == "day") {
-      console.log(this.TransactionService.get_transaction_this_day(this.account.get_ac_id()).subscribe((res) => {
+      this.TransactionService.get_transaction_this_day(this.account.get_ac_id()).subscribe((res) => {
         res.forEach(element => {
           let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
-          this.transaction_by_account = [];
-          this.transaction_by_account.push({
+          this.transaction_by_day = [];
+          this.transaction_by_day.push({
             ts_id: element.ts_id,
             ts_name: element.ts_name,
             ts_cost: element.ts_cost,
@@ -150,15 +152,15 @@ export class Tab3Page implements OnInit {
             ts_time: this.MainMenuPage.format_time(fulldate),
           })
         })
-      }))
-      console.log(this.transaction_by_account)
+      })
+      console.log(this.transaction_by_month)
       this.history_type = "day"
     } else if (ev.detail.value == "month") {
-      console.log(this.TransactionService.get_transaction_this_month(this.account.get_ac_id()).subscribe((res) => {
-        this.transaction_by_account = [];
+      this.TransactionService.get_transaction_this_month(this.account.get_ac_id()).subscribe((res) => {
+        this.transaction_by_month = [];
         res.forEach(element => {
           let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
-          this.transaction_by_account.push({
+          this.transaction_by_month.push({
             ts_id: element.ts_id,
             ts_name: element.ts_name,
             ts_cost: element.ts_cost,
@@ -169,11 +171,11 @@ export class Tab3Page implements OnInit {
             ts_time: this.MainMenuPage.format_time(fulldate),
           })
         })
-      }))
-      console.log(this.transaction_by_account)
+      })
+      console.log(this.transaction_by_month)
       this.history_type = "month"
     } else {
-      console.log(this.TransactionService.get_transaction_this_between(this.start_date, this.end_date, this.account.get_ac_id()).subscribe((res) => {
+      this.TransactionService.get_transaction_this_between(this.start_date, this.end_date, this.account.get_ac_id()).subscribe((res) => {
         this.transaction_by_history = [];
         res.forEach(element => {
           let fulldate = new Date(element.ts_date).toLocaleString("en-US", { timeZone: "Asia/Bangkok" });
@@ -188,7 +190,7 @@ export class Tab3Page implements OnInit {
             ts_time: this.MainMenuPage.format_time(fulldate),
           })
         })
-      }))
+      })
       console.log(this.transaction_by_history)
       this.history_type = "other"
     }
@@ -196,12 +198,12 @@ export class Tab3Page implements OnInit {
 
   myHeaderFn(record, recordIndex, records) {
 
-    var date:any = record.ts_date;
+    var date: any = record.ts_date;
     date = new Date(date);
-    var month = date.toLocaleString("en-us", { month: "short" });
+    var month = date.toLocaleString("th", { month: "short" });
     var day = date.getDate();
     var year = date.getFullYear();
-    var newDate = month + '. ' + day + ', ' + year
+    var newDate = month + ' ' + day + ', ' + year
 
     if (recordIndex == 0) {
       console.log("hello");
@@ -213,15 +215,15 @@ export class Tab3Page implements OnInit {
     let prev = records[recordIndex - 1].ts_date
     let current = record.ts_date
 
-    if(prev != current){
+    if (prev != current) {
       return current;
     }
 
     return null;
   }
 
-  set_format_date(){
-    return 
+  set_format_date() {
+    return
   }
 
   ngOnInit() {
