@@ -128,34 +128,3 @@ export class Transaction_food extends Transaction {
     }
 
 }
-
-// export interface Transaction_type_factory {
-//     create_a_transaction_type(): string;
-// }
-
-// class Transaction_type_entertain implements Transaction_type_factory {
-//     public ts_type_id: any;
-//     public create_a_transaction_type(): any {
-//         return this.ts_type_id = 1;
-//     }
-// }
-
-// class Transaction_type_food implements Transaction_type_factory {
-//     public ts_type_id: any;
-//     public create_a_transaction_type(): any {
-//         return this.ts_type_id = 2;
-//     }
-// }
-
-// class Transaction_type_default implements Transaction_type_factory {
-//     public ts_type_id: any;
-//     public create_a_transaction_type(): any {
-//         return this.ts_type_id = 3;
-//     }
-// }
-
-// function clientCode(transaction: Transaction) {
-//     // ...
-//     transaction.create_transaction("name","cost","date","detail","ac_id","type_id","category");
-//     // ...
-// }

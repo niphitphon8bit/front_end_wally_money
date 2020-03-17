@@ -16,14 +16,17 @@ import { Http, HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomePage } from './homepage/homepage.page';
+import { AccountEditPage } from './account-edit/account-edit.page';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TransactionInsertPage
+    TransactionInsertPage,
+    AccountEditPage,
   ],
   entryComponents: [
-    TransactionInsertPage
+    TransactionInsertPage,
+    AccountEditPage,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,9 @@ import { HomePage } from './homepage/homepage.page';
     Transaction_default,
     Transaction_food,
     Tab3Page,
+    AccountEditPage,
     Tab1Page
+
 
   ],
   bootstrap: [AppComponent]

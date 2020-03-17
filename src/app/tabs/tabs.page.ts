@@ -53,6 +53,7 @@ export class TabsPage implements OnInit {
     this.MainMenuPage.set_account(this.account);
     this.Tab3Page.set_account(this.account);
     this.Tab1Page.set_account(this.account);
+    this.AccountPage.set_account(this.account);
   }
 
 

@@ -49,8 +49,12 @@ regisCheck(ac_username:string){
   return this.http.post(this.url + "/account_regisCheck", data).map((res) => res.json());
 }
 
-
-
-
+update_account(ac_id:string,ac_fname:string,ac_lname:string){
+let data = {
+  "ac_fname": ac_fname,
+  "ac_lname":ac_lname,
+}
+return this.http.put(this.url + "/account_update/:id" + ac_id,data).map((res) => res.json());
+}
 
 }
