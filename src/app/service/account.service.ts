@@ -17,7 +17,7 @@ export class AccountService {
     return this.http.get('http://localhost:3000/account').map((res)=> res.json());
   }
 
-  get_all_account_by_id(){
+  get_all_account_by_id(ac_id){
     return this.http.get(`http://localhost:3000/get_all_account_by_id/${ac_id}`).map((res)=> res.json());
   }
 
