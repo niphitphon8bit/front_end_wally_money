@@ -34,7 +34,7 @@ export class LoginPage implements OnInit {
 
     this.accountservice.check_login(this.username, this.password).subscribe((res) => {
       console.log("Hello World")
-      console.log(res[0].ac_id)
+      // console.log(res[0].ac_id)
       if (this.username != null) {
         let navigationExtras: NavigationExtras = {
           state: {
